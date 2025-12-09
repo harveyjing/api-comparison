@@ -3,11 +3,11 @@
 API Comparison Script
 
 Compares REST API calls between old and new service versions.
-Parses Chrome DevTools fetch files and shows differences in:
+Loads saved request/response data from JSON files and shows differences in:
 - Path
 - Query parameters
 - Payload (request body)
-- Response body (optional, requires API calls)
+- Response body
 """
 
 import re
@@ -22,6 +22,8 @@ from pathlib import Path
 # Optional import for response comparison
 try:
     import requests
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -37,6 +39,7 @@ class APIRequest:
     headers: Dict[str, str]
     body: Optional[str]
     body_json: Optional[Dict] = None
+    response: Optional[Dict] = None
     
     def __post_init__(self):
         """Parse body as JSON if possible."""
@@ -182,9 +185,8 @@ class FetchParser:
 class APIComparator:
     """Compares API requests between old and new versions."""
     
-    def __init__(self, compare_responses: bool = False, timeout: int = 10):
-        self.compare_responses = compare_responses
-        self.timeout = timeout
+    def __init__(self):
+        pass
     
     def compare(self, old_requests: List[APIRequest], 
                 new_requests: List[APIRequest]) -> Dict:
@@ -324,35 +326,59 @@ class APIComparator:
             
             differences['query_params'] = param_diff
         
-        # Compare payload
+        # Compare payload (structure only, not values)
         old_body = old_req.body_json if old_req.body_json else old_req.body
         new_body = new_req.body_json if new_req.body_json else new_req.body
         
-        if old_body != new_body:
+        # If both are JSON, compare structure only
+        if old_req.body_json and new_req.body_json:
+            json_diff = self._compare_json(old_req.body_json, new_req.body_json)
+            if json_diff['added'] or json_diff['removed'] or json_diff['changed']:
+                payload_diff = {
+                    'old': old_body,
+                    'new': new_body,
+                    'json_diff': json_diff
+                }
+                differences['payload'] = payload_diff
+        elif old_body != new_body:
+            # For non-JSON payloads, still compare values
             payload_diff = {
                 'old': old_body,
                 'new': new_body
             }
-            
-            # If both are JSON, also include structured diff
-            if old_req.body_json and new_req.body_json:
-                json_diff = self._compare_json(old_req.body_json, new_req.body_json)
-                if json_diff['added'] or json_diff['removed'] or json_diff['changed']:
-                    payload_diff['json_diff'] = json_diff
-            
             differences['payload'] = payload_diff
         
-        # Response body comparison (if enabled)
-        if self.compare_responses:
-            response_diff = self._compare_responses(old_req, new_req)
-            if response_diff:
-                differences['response'] = response_diff
+        # Response body comparison (from saved data)
+        response_data = None
+        if old_req.response is not None or new_req.response is not None:
+            response_data = self._compare_saved_responses(old_req, new_req)
+            if response_data and 'error' not in response_data:
+                # Check if there are actual differences in the response
+                has_response_diff = False
+                if 'status_code' in response_data:
+                    status_code = response_data['status_code']
+                    if isinstance(status_code, dict) and status_code.get('old') != status_code.get('new'):
+                        has_response_diff = True
+                if 'body' in response_data:
+                    body = response_data['body']
+                    if isinstance(body, dict):
+                        if 'json_diff' in body:
+                            has_response_diff = True
+                        elif body.get('old') != body.get('new'):
+                            has_response_diff = True
+                
+                if has_response_diff:
+                    differences['response'] = response_data
         
         result = {
             'method': old_req.method,
             'path': old_req.path,
             'has_differences': len(differences) > 0
         }
+        
+        # Always include response data if available, even if no differences
+        if response_data:
+            result['response'] = response_data
         
         if differences:
             result['differences'] = differences
@@ -368,7 +394,7 @@ class APIComparator:
         return normalized
     
     def _compare_json(self, old_json: Dict, new_json: Dict) -> Dict:
-        """Compare two JSON objects and return differences."""
+        """Compare two JSON objects and return differences (structure only, not values)."""
         diff = {
             'added': {},
             'removed': {},
@@ -380,19 +406,83 @@ class APIComparator:
         
         if isinstance(old_json, dict) and isinstance(new_json, dict):
             for key in new_keys - old_keys:
-                diff['added'][key] = new_json[key]
+                # Store structure info, not actual value
+                diff['added'][key] = self._get_structure(new_json[key])
             
             for key in old_keys - new_keys:
-                diff['removed'][key] = old_json[key]
+                # Store structure info, not actual value
+                diff['removed'][key] = self._get_structure(old_json[key])
             
             for key in old_keys & new_keys:
-                if old_json[key] != new_json[key]:
+                old_val = old_json[key]
+                new_val = new_json[key]
+                
+                # Compare structures, not values
+                # If both are objects, always recursively compare their structure
+                if isinstance(old_val, dict) and isinstance(new_val, dict):
+                    nested_diff = self._compare_json(old_val, new_val)
+                    if nested_diff['added'] or nested_diff['removed'] or nested_diff['changed']:
+                        diff['changed'][key] = nested_diff
+                elif isinstance(old_val, list) and isinstance(new_val, list):
+                    # Compare list structures - check if items have different structures
+                    old_item_types = [self._get_structure(item) for item in old_val]
+                    new_item_types = [self._get_structure(item) for item in new_val]
+                    if old_item_types != new_item_types:
+                        diff['changed'][key] = {
+                            'old_structure': old_item_types,
+                            'new_structure': new_item_types
+                        }
+                elif self._has_structure_difference(old_val, new_val):
+                    # Different types or structures
                     diff['changed'][key] = {
-                        'old': old_json[key],
-                        'new': new_json[key]
+                        'old_type': self._get_structure(old_val),
+                        'new_type': self._get_structure(new_val)
                     }
         
         return diff
+    
+    def _get_structure(self, value) -> str:
+        """Get a string representation of the structure/type of a value."""
+        if isinstance(value, dict):
+            return f"object({', '.join(sorted(value.keys()))})"
+        elif isinstance(value, list):
+            if len(value) == 0:
+                return "array[]"
+            # Get structure of first item as representative
+            first_item_structure = self._get_structure(value[0])
+            return f"array[{first_item_structure}]"
+        elif isinstance(value, str):
+            return "string"
+        elif isinstance(value, (int, float)):
+            return "number"
+        elif isinstance(value, bool):
+            return "boolean"
+        elif value is None:
+            return "null"
+        else:
+            return type(value).__name__
+    
+    def _has_structure_difference(self, old_val, new_val) -> bool:
+        """Check if two values have different structures (not values)."""
+        # Different types
+        if type(old_val) != type(new_val):
+            return True
+        
+        # Both are dicts - compare keys only
+        if isinstance(old_val, dict) and isinstance(new_val, dict):
+            return set(old_val.keys()) != set(new_val.keys())
+        
+        # Both are lists - compare item structures
+        if isinstance(old_val, list) and isinstance(new_val, list):
+            if len(old_val) != len(new_val):
+                return True
+            # Compare structures of items
+            old_structures = [self._get_structure(item) for item in old_val]
+            new_structures = [self._get_structure(item) for item in new_val]
+            return old_structures != new_structures
+        
+        # For primitive types, structure is the same (we don't compare values)
+        return False
     
     def _request_to_dict(self, req: APIRequest, metadata: Dict) -> Dict:
         """Convert APIRequest to dictionary (without base URL and auth token)."""
@@ -411,195 +501,223 @@ class APIComparator:
         if payload:
             result['payload'] = payload
         
+        # Add response data if present
+        if req.response is not None:
+            response_data = self._format_single_response(req.response)
+            if response_data:
+                result['response'] = response_data
+        
         return result
     
-    def _compare_responses(self, old_req: APIRequest, 
-                          new_req: APIRequest) -> Optional[Dict]:
-        """Compare response bodies by making API calls."""
-        if not HAS_REQUESTS:
+    def _format_single_response(self, response: Dict) -> Optional[Dict]:
+        """Format a single response (not a comparison) for inclusion in only_in_old/only_in_new."""
+        # Handle errors in responses
+        if 'error' in response:
             return {
-                'error': 'requests library not installed. Install with: pip install requests'
+                'error': response['error'],
+                'success': False
             }
         
-        try:
-            old_response = self._make_request(old_req)
-            new_response = self._make_request(new_req)
-            
-            if old_response is None or new_response is None:
-                return {
-                    'error': 'Failed to fetch one or both responses',
-                    'old_success': old_response is not None,
-                    'new_success': new_response is not None
-                }
-            
-            # Compare status codes
-            status_diff = None
-            if old_response.get('status_code') != new_response.get('status_code'):
-                status_diff = {
-                    'old': old_response.get('status_code'),
-                    'new': new_response.get('status_code')
-                }
-            
-            # Compare response bodies
-            old_body = old_response.get('body')
-            new_body = new_response.get('body')
-            
-            body_diff = None
-            if old_body != new_body:
-                # Try to parse as JSON for structured comparison
-                old_json = None
-                new_json = None
-                
+        result = {}
+        
+        # Always include status code if available
+        if 'status_code' in response:
+            result['status_code'] = response['status_code']
+        
+        # Always include response body if available
+        if 'body' in response:
+            body = response['body']
+            # Try to parse as JSON if it's a string
+            if isinstance(body, str):
                 try:
-                    old_json = json.loads(old_body) if old_body else None
+                    body = json.loads(body)
                 except (json.JSONDecodeError, TypeError):
                     pass
-                
-                try:
-                    new_json = json.loads(new_body) if new_body else None
-                except (json.JSONDecodeError, TypeError):
-                    pass
-                
-                if old_json is not None and new_json is not None:
-                    # Both are JSON, do structured comparison
-                    json_diff = self._compare_json(old_json, new_json)
-                    body_diff = {
-                        'old': old_json,
-                        'new': new_json,
-                        'json_diff': json_diff
-                    }
-                else:
-                    # Text comparison
-                    body_diff = {
-                        'old': old_body,
-                        'new': new_body
-                    }
-            
-            if status_diff or body_diff:
-                return {
-                    'status_code': status_diff,
-                    'body': body_diff
-                }
-            
-            return None  # No differences
-            
-        except Exception as e:
-            return {
-                'error': f'Error comparing responses: {str(e)}'
-            }
+            result['body'] = body
+        elif 'body_json' in response:
+            result['body'] = response['body_json']
+        
+        return result if result else None
     
-    def _make_request(self, req: APIRequest) -> Optional[Dict]:
-        """Make an HTTP request and return response."""
-        try:
-            # Build URL with query parameters
-            url = req.url
-            if req.query_params:
-                # Reconstruct URL with query params
-                parsed = urlparse(url)
-                query_string = urlencode(
-                    {k: v[0] if isinstance(v, list) and len(v) == 1 else v 
-                     for k, v in req.query_params.items()},
-                    doseq=True
-                )
-                url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{query_string}"
-            
-            # Prepare headers (filter out browser-specific headers)
-            headers = {}
-            skip_headers = {'sec-fetch-', 'sec-ch-ua', 'referrer', 'priority'}
-            for key, value in req.headers.items():
-                if not any(key.lower().startswith(skip) for skip in skip_headers):
-                    headers[key] = value
-            
-            # Make request
-            if req.method.upper() == 'GET':
-                response = requests.get(url, headers=headers, timeout=self.timeout)
-            elif req.method.upper() == 'POST':
-                data = req.body if req.body else None
-                response = requests.post(url, headers=headers, data=data, timeout=self.timeout)
-            elif req.method.upper() == 'PUT':
-                data = req.body if req.body else None
-                response = requests.put(url, headers=headers, data=data, timeout=self.timeout)
-            elif req.method.upper() == 'DELETE':
-                response = requests.delete(url, headers=headers, timeout=self.timeout)
-            elif req.method.upper() == 'PATCH':
-                data = req.body if req.body else None
-                response = requests.patch(url, headers=headers, data=data, timeout=self.timeout)
-            else:
-                return None
-            
-            # Get response body
+    def _compare_saved_responses(self, old_req: APIRequest, 
+                                 new_req: APIRequest) -> Optional[Dict]:
+        """Compare response bodies from saved response data."""
+        old_response = old_req.response
+        new_response = new_req.response
+        
+        # Handle errors in responses
+        if old_response and 'error' in old_response:
+            return {
+                'error': f"Old request error: {old_response['error']}",
+                'old_success': False,
+                'new_success': new_response is not None and 'error' not in new_response
+            }
+        
+        if new_response and 'error' in new_response:
+            return {
+                'error': f"New request error: {new_response['error']}",
+                'old_success': old_response is not None and 'error' not in old_response,
+                'new_success': False
+            }
+        
+        if old_response is None and new_response is None:
+            return None
+        
+        if old_response is None or new_response is None:
+            return {
+                'error': 'One or both responses are missing',
+                'old_success': old_response is not None,
+                'new_success': new_response is not None
+            }
+        
+        # Always include status codes
+        old_status = old_response.get('status_code')
+        new_status = new_response.get('status_code')
+        status_code = {
+            'old': old_status,
+            'new': new_status
+        }
+        
+        # Always include response bodies
+        old_body = old_response.get('body')
+        new_body = new_response.get('body')
+        
+        # Try to parse as JSON for structured comparison
+        old_json = None
+        new_json = None
+        
+        # Use body_json if available, otherwise parse body string
+        if old_response.get('body_json') is not None:
+            old_json = old_response.get('body_json')
+        elif old_body:
             try:
-                body = response.json()
-                body_str = json.dumps(body, indent=2)
-            except (ValueError, json.JSONDecodeError):
-                body = response.text
-                body_str = body
-            
-            return {
-                'status_code': response.status_code,
-                'body': body_str,
-                'body_json': body if isinstance(body, dict) else None
+                old_json = json.loads(old_body) if old_body else None
+            except (json.JSONDecodeError, TypeError):
+                pass
+        
+        if new_response.get('body_json') is not None:
+            new_json = new_response.get('body_json')
+        elif new_body:
+            try:
+                new_json = json.loads(new_body) if new_body else None
+            except (json.JSONDecodeError, TypeError):
+                pass
+        
+        # Always include body data
+        if old_json is not None and new_json is not None:
+            # Both are JSON, compare structure
+            json_diff = self._compare_json(old_json, new_json)
+            body = {
+                'old': old_json,
+                'new': new_json
             }
-            
-        except requests.exceptions.RequestException as e:
-            return {
-                'error': f'Request failed: {str(e)}'
+            # Only include json_diff if there are differences
+            if json_diff['added'] or json_diff['removed'] or json_diff['changed']:
+                body['json_diff'] = json_diff
+        else:
+            # Text comparison (non-JSON)
+            body = {
+                'old': old_body,
+                'new': new_body
             }
-        except Exception as e:
-            return {
-                'error': f'Unexpected error: {str(e)}'
-            }
+        
+        # Always return response data, even if there are no differences
+        return {
+            'status_code': status_code,
+            'body': body
+        }
+    
+
+
+def load_requests_from_file(file_path: Path) -> Tuple[List[APIRequest], Dict]:
+    """Load APIRequest objects from saved JSON file."""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    metadata = data.get('metadata', {})
+    requests_data = data.get('requests', [])
+    
+    # Convert dicts back to APIRequest objects
+    requests = []
+    for req_dict in requests_data:
+        # Convert query_params back to Dict[str, List[str]] format
+        query_params = req_dict.get('query_params', {})
+        if query_params:
+            # Ensure values are lists
+            normalized_query_params = {}
+            for k, v in query_params.items():
+                if isinstance(v, list):
+                    normalized_query_params[k] = v
+                else:
+                    normalized_query_params[k] = [v] if v else ['']
+            req_dict['query_params'] = normalized_query_params
+        
+        # Create APIRequest object
+        req = APIRequest(
+            url=req_dict.get('url', ''),
+            method=req_dict.get('method', 'GET'),
+            path=req_dict.get('path', ''),
+            query_params=req_dict.get('query_params', {}),
+            headers=req_dict.get('headers', {}),
+            body=req_dict.get('body'),
+            body_json=req_dict.get('body_json'),
+            response=req_dict.get('response')
+        )
+        requests.append(req)
+    
+    return requests, metadata
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Compare REST API calls between old and new service versions'
+        description='Compare REST API calls between old and new service versions from saved data'
     )
     parser.add_argument(
         'old_file',
         type=Path,
-        help='Path to old service fetch file'
+        help='Path to old service saved requests JSON file'
     )
     parser.add_argument(
         'new_file',
         type=Path,
-        help='Path to new service fetch file'
+        help='Path to new service saved requests JSON file'
     )
     parser.add_argument(
         '-o', '--output',
         type=Path,
         help='Output JSON file (default: stdout)'
     )
-    parser.add_argument(
-        '--compare-responses',
-        action='store_true',
-        help='Compare response bodies (requires making API calls)'
-    )
     
     args = parser.parse_args()
     
-    # Check if requests is available when response comparison is requested
-    if args.compare_responses and not HAS_REQUESTS:
-        print("Error: --compare-responses requires the 'requests' library.", file=sys.stderr)
-        print("Install it with: pip install requests", file=sys.stderr)
-        sys.exit(1)
-    
-    # Parse files
-    fetch_parser = FetchParser()
-    
+    # Load saved request files
     try:
-        old_requests = fetch_parser.parse_file(args.old_file)
-        new_requests = fetch_parser.parse_file(args.new_file)
+        old_requests, old_metadata = load_requests_from_file(args.old_file)
+        new_requests, new_metadata = load_requests_from_file(args.new_file)
     except FileNotFoundError as e:
         print(f"Error: File not found: {e}", file=sys.stderr)
         sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON file: {e}", file=sys.stderr)
+        sys.exit(1)
     except Exception as e:
-        print(f"Error parsing files: {e}", file=sys.stderr)
+        print(f"Error loading files: {e}", file=sys.stderr)
         sys.exit(1)
     
+    # Merge metadata
+    metadata = {
+        'old_base_url': old_metadata.get('base_url'),
+        'new_base_url': new_metadata.get('base_url'),
+        'old_auth_token': old_metadata.get('auth_token'),
+        'new_auth_token': new_metadata.get('auth_token')
+    }
+    
     # Compare
-    comparator = APIComparator(compare_responses=args.compare_responses)
+    comparator = APIComparator()
     results = comparator.compare(old_requests, new_requests)
+    
+    # Override metadata with loaded metadata
+    results['metadata'] = metadata
     
     # Output
     output_json = json.dumps(results, indent=2, ensure_ascii=False)

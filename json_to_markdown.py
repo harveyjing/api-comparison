@@ -59,10 +59,10 @@ class MarkdownConverter:
             lines.append(f"| Only in New | {summary.get('only_in_new', 0)} |")
             lines.append("")
         
-        # Combined table for all requests
+        # Combined table for all requests with full details
         lines.append("## All Requests\n")
-        lines.append("| Method | Path | Old Query Params | Old Payload | New Query Params | New Payload | Differences |")
-        lines.append("|--------|------|------------------|-------------|------------------|-------------|-------------|")
+        lines.append("| Method | Path | Legacy Query Params | NextGen Query Params | Query Params Diff | Legacy Payload | NextGen Payload | Payload Diff | Legacy Response | NextGen Response | Status Code Diff | Body Diff |")
+        lines.append("|--------|------|---------------------|----------------------|-------------------|----------------|-----------------|-------------|-----------------|------------------|------------------|-----------|")
         
         # Process matched requests
         if 'matched' in json_data:
@@ -70,267 +70,344 @@ class MarkdownConverter:
                 method = req.get('method', 'N/A')
                 path = req.get('path', 'N/A')
                 differences = req.get('differences', {})
-                has_diffs = req.get('has_differences', False)
                 
                 # Reconstruct old and new values from differences
                 old_qp, new_qp = self._reconstruct_query_params(differences)
                 old_payload, new_payload = self._reconstruct_payload(differences)
+                old_response, new_response = self._reconstruct_response(differences)
                 
-                # Format differences summary
-                diff_summary = self._format_diff_summary(differences) if has_diffs else "-"
+                old_qp_str = self._format_value_detailed(old_qp) if old_qp else "-"
+                new_qp_str = self._format_value_detailed(new_qp) if new_qp else "-"
+                old_payload_str = self._format_value_detailed(old_payload) if old_payload else "-"
+                new_payload_str = self._format_value_detailed(new_payload) if new_payload else "-"
+                old_response_str = self._format_response_detailed(old_response) if old_response else "-"
+                new_response_str = self._format_response_detailed(new_response) if new_response else "-"
                 
-                old_qp_str = self._format_query_params(old_qp) if old_qp else "-"
-                new_qp_str = self._format_query_params(new_qp) if new_qp else "-"
-                old_payload_str = self._format_payload(old_payload) if old_payload else "-"
-                new_payload_str = self._format_payload(new_payload) if new_payload else "-"
+                # Format differences
+                qp_diff_str = self._format_query_params_diff(differences.get('query_params', {}))
+                payload_diff_str = self._format_payload_diff(differences.get('payload', {}))
+                status_diff_str = self._format_status_code_diff(differences.get('response', {}))
+                body_diff_str = self._format_body_diff(differences.get('response', {}))
                 
-                lines.append(f"| `{method}` | `{path}` | {old_qp_str} | {old_payload_str} | {new_qp_str} | {new_payload_str} | {diff_summary} |")
+                lines.append(f"| `{self._escape_table_cell(method)}` | `{self._escape_table_cell(path)}` | {old_qp_str} | {new_qp_str} | {qp_diff_str} | {old_payload_str} | {new_payload_str} | {payload_diff_str} | {old_response_str} | {new_response_str} | {status_diff_str} | {body_diff_str} |")
         
         # Process only in old
         if 'only_in_old' in json_data:
             for req in json_data['only_in_old']:
                 method = req.get('method', 'N/A')
                 path = req.get('path', 'N/A')
-                query_params = self._format_query_params(req.get('query_params', {}))
-                payload = self._format_payload(req.get('payload'))
-                lines.append(f"| `{method}` | `{path}` | {query_params} | {payload} | - | - | Only in Old |")
+                query_params = self._format_value_detailed(req.get('query_params', {})) if req.get('query_params') else "-"
+                payload = self._format_value_detailed(req.get('payload')) if req.get('payload') is not None else "-"
+                # Format response if available
+                old_response_str = "-"
+                if 'response' in req:
+                    old_response_str = self._format_single_response(req['response'])
+                lines.append(f"| `{self._escape_table_cell(method)}` | `{self._escape_table_cell(path)}` | {query_params} | - | No | {payload} | - | No | {old_response_str} | - | No | No |")
         
         # Process only in new
         if 'only_in_new' in json_data:
             for req in json_data['only_in_new']:
                 method = req.get('method', 'N/A')
                 path = req.get('path', 'N/A')
-                query_params = self._format_query_params(req.get('query_params', {}))
-                payload = self._format_payload(req.get('payload'))
-                lines.append(f"| `{method}` | `{path}` | - | - | {query_params} | {payload} | Only in New |")
+                query_params = self._format_value_detailed(req.get('query_params', {})) if req.get('query_params') else "-"
+                payload = self._format_value_detailed(req.get('payload')) if req.get('payload') is not None else "-"
+                # Format response if available
+                new_response_str = "-"
+                if 'response' in req:
+                    new_response_str = self._format_single_response(req['response'])
+                lines.append(f"| `{self._escape_table_cell(method)}` | `{self._escape_table_cell(path)}` | - | {query_params} | No | - | {payload} | No | - | {new_response_str} | No | No |")
         
         lines.append("")
         
-        # Detailed differences for matched requests with differences
-        if 'matched' in json_data:
-            with_diffs = [r for r in json_data['matched'] if r.get('has_differences', False)]
-            if with_diffs:
-                lines.append("## Detailed Differences\n")
-                for req in with_diffs:
-                    lines.extend(self._format_request_with_differences(req))
-                    lines.append("")
-        
         return "\n".join(lines)
     
-    def _format_request_with_differences(self, req: Dict) -> List[str]:
-        """Format a request with its differences in table format."""
-        lines = []
-        
-        method = req.get('method', 'N/A')
-        path = req.get('path', 'N/A')
-        differences = req.get('differences', {})
-        
-        lines.append(f"### `{method} {path}`\n")
-        
-        # Path differences
-        if 'path' in differences:
-            path_diff = differences['path']
-            lines.append("**Path Difference:**")
-            lines.append("| Old | New |")
-            lines.append("|-----|-----|")
-            old_path = path_diff.get('old', 'N/A')
-            new_path = path_diff.get('new', 'N/A')
-            lines.append(f"| `{old_path}` | `{new_path}` |")
-            lines.append("")
-        
-        # Query parameter differences
-        if 'query_params' in differences:
-            qp_diff = differences['query_params']
-            lines.append("**Query Parameter Differences:**")
-            
-            # Collect all differences for table
-            table_rows = []
-            
-            if 'added' in qp_diff and qp_diff['added']:
-                for key, value in qp_diff['added'].items():
-                    table_rows.append(('Added', key, '-', self._format_value_for_table(value)))
-            
-            if 'removed' in qp_diff and qp_diff['removed']:
-                for key, value in qp_diff['removed'].items():
-                    table_rows.append(('Removed', key, self._format_value_for_table(value), '-'))
-            
-            if 'changed' in qp_diff and qp_diff['changed']:
-                for key, change in qp_diff['changed'].items():
-                    old_val = self._format_value_for_table(change.get('old'))
-                    new_val = self._format_value_for_table(change.get('new'))
-                    table_rows.append(('Changed', key, old_val, new_val))
-            
-            if table_rows:
-                lines.append("| Type | Parameter | Old Value | New Value |")
-                lines.append("|------|-----------|-----------|-----------|")
-                for row_type, key, old_val, new_val in table_rows:
-                    lines.append(f"| {row_type} | `{key}` | {old_val} | {new_val} |")
-                lines.append("")
-        
-        # Payload differences
-        if 'payload' in differences:
-            payload_diff = differences['payload']
-            lines.append("**Payload Differences:**")
-            
-            if 'json_diff' in payload_diff:
-                json_diff = payload_diff['json_diff']
-                table_rows = []
-                
-                if 'added' in json_diff and json_diff['added']:
-                    for key, value in json_diff['added'].items():
-                        table_rows.append(('Added', key, '-', self._format_value_for_table(value)))
-                
-                if 'removed' in json_diff and json_diff['removed']:
-                    for key, value in json_diff['removed'].items():
-                        table_rows.append(('Removed', key, self._format_value_for_table(value), '-'))
-                
-                if 'changed' in json_diff and json_diff['changed']:
-                    for key, change in json_diff['changed'].items():
-                        old_val = change.get('old')
-                        new_val = change.get('new')
-                        old_str = self._format_value_for_table(old_val)
-                        new_str = self._format_value_for_table(new_val)
-                        table_rows.append(('Changed', key, old_str, new_str))
-                
-                if table_rows:
-                    lines.append("| Type | Field | Old Value | New Value |")
-                    lines.append("|------|-------|-----------|-----------|")
-                    for row_type, key, old_val, new_val in table_rows:
-                        lines.append(f"| {row_type} | `{key}` | {old_val} | {new_val} |")
-                    lines.append("")
-            else:
-                # Text comparison - use table
-                old_payload = payload_diff.get('old')
-                new_payload = payload_diff.get('new')
-                lines.append("| Old | New |")
-                lines.append("|-----|-----|")
-                old_str = self._format_value_for_table(old_payload)
-                new_str = self._format_value_for_table(new_payload)
-                lines.append(f"| {old_str} | {new_str} |")
-                lines.append("")
-        
-        # Response differences
-        if 'response' in differences:
-            response_diff = differences['response']
-            lines.append("**Response Differences:**")
-            
-            if 'error' in response_diff:
-                lines.append("| Type | Message |")
-                lines.append("|------|---------|")
-                lines.append(f"| Error | {response_diff['error']} |")
-            else:
-                table_rows = []
-                
-                if 'status_code' in response_diff:
-                    status = response_diff['status_code']
-                    table_rows.append(('Status Code', 
-                                     str(status.get('old', 'N/A')), 
-                                     str(status.get('new', 'N/A'))))
-                
-                if 'body' in response_diff:
-                    body_diff = response_diff['body']
-                    if 'json_diff' in body_diff:
-                        json_diff = body_diff['json_diff']
-                        if 'added' in json_diff and json_diff['added']:
-                            for key, value in json_diff['added'].items():
-                                table_rows.append(('Body Field Added', key, '-', self._format_value_for_table(value)))
-                        if 'removed' in json_diff and json_diff['removed']:
-                            for key, value in json_diff['removed'].items():
-                                table_rows.append(('Body Field Removed', key, self._format_value_for_table(value), '-'))
-                        if 'changed' in json_diff and json_diff['changed']:
-                            for key, change in json_diff['changed'].items():
-                                old_val = self._format_value_for_table(change.get('old'))
-                                new_val = self._format_value_for_table(change.get('new'))
-                                table_rows.append(('Body Field Changed', key, old_val, new_val))
-                    else:
-                        old_body = body_diff.get('old')
-                        new_body = body_diff.get('new')
-                        table_rows.append(('Body', self._format_value_for_table(old_body), 
-                                         self._format_value_for_table(new_body)))
-                
-                if table_rows:
-                    if any(len(row) == 4 for row in table_rows):
-                        lines.append("| Type | Field | Old Value | New Value |")
-                        lines.append("|------|-------|-----------|-----------|")
-                        for row in table_rows:
-                            if len(row) == 4:
-                                lines.append(f"| {row[0]} | `{row[1]}` | {row[2]} | {row[3]} |")
-                            else:
-                                lines.append(f"| {row[0]} | {row[1]} | {row[2]} |")
-                    else:
-                        lines.append("| Type | Old Value | New Value |")
-                        lines.append("|------|-----------|-----------|")
-                        for row in table_rows:
-                            lines.append(f"| {row[0]} | {row[1]} | {row[2]} |")
-            
-            lines.append("")
-        
-        return lines
     
-    def _format_query_params(self, params: Dict) -> str:
-        """Format query parameters for table display."""
-        if not params:
+    def _escape_table_cell(self, text: str) -> str:
+        """Escape special characters that break markdown tables."""
+        if text is None:
+            return ""
+        text_str = str(text)
+        # Escape pipe characters (breaks column separation)
+        text_str = text_str.replace('|', '\\|')
+        # Replace newlines and carriage returns with spaces
+        text_str = text_str.replace('\n', ' ').replace('\r', ' ')
+        # Remove multiple consecutive spaces
+        while '  ' in text_str:
+            text_str = text_str.replace('  ', ' ')
+        return text_str
+    
+    def _format_value_detailed(self, value: Any) -> str:
+        """Format any value with full details."""
+        if value is None:
+            return "-"
+        
+        if isinstance(value, (dict, list)):
+            # Convert to JSON string for full details
+            try:
+                json_str = json.dumps(value, indent=2, ensure_ascii=False)
+                # Escape special characters for table
+                json_str = self._escape_table_cell(json_str)
+                return f"<pre>{json_str}</pre>"
+            except (TypeError, ValueError):
+                # Fallback to string representation
+                value_str = str(value)
+                value_str = self._escape_table_cell(value_str)
+                return f"<pre>{value_str}</pre>"
+        
+        # For string values
+        value_str = str(value)
+        value_str = self._escape_table_cell(value_str)
+        return f"<pre>{value_str}</pre>"
+    
+    def _format_query_params_diff(self, qp_diff: Dict) -> str:
+        """Format query parameters differences (simple key-value pairs, not JSON)."""
+        if not qp_diff:
+            return "No"
+        
+        parts = []
+        
+        # Added parameters
+        if 'added' in qp_diff and qp_diff['added']:
+            added_items = []
+            for key, value in qp_diff['added'].items():
+                added_items.append(f"{key}={value}")
+            if added_items:
+                parts.append(f"+{', '.join(added_items)}")
+        
+        # Removed parameters
+        if 'removed' in qp_diff and qp_diff['removed']:
+            removed_items = []
+            for key, value in qp_diff['removed'].items():
+                removed_items.append(f"{key}={value}")
+            if removed_items:
+                parts.append(f"-{', '.join(removed_items)}")
+        
+        # Changed parameters
+        if 'changed' in qp_diff and qp_diff['changed']:
+            changed_items = []
+            for key, change in qp_diff['changed'].items():
+                if isinstance(change, dict):
+                    old_val = change.get('old', '')
+                    new_val = change.get('new', '')
+                    changed_items.append(f"{key}: {old_val}→{new_val}")
+                else:
+                    changed_items.append(f"{key}: changed")
+            if changed_items:
+                parts.append(f"~{', '.join(changed_items)}")
+        
+        return "Yes: " + " | ".join(parts) if parts else "No"
+    
+    def _format_payload_diff(self, payload_diff: Dict) -> str:
+        """Format payload differences."""
+        if not payload_diff or 'json_diff' not in payload_diff:
+            return "No"
+        
+        diff_summary = self._format_json_diff_summary(payload_diff['json_diff'])
+        return "Yes: " + diff_summary if diff_summary != "-" else "No"
+    
+    def _format_status_code_diff(self, response_diff: Dict) -> str:
+        """Format status code differences."""
+        if not response_diff or 'status_code' not in response_diff:
+            return "No"
+        
+        status = response_diff['status_code']
+        old_status = status.get('old')
+        new_status = status.get('new')
+        
+        if old_status == new_status:
+            return "No"
+        else:
+            return f"Yes: `{old_status}` → `{new_status}`"
+    
+    def _format_body_diff(self, response_diff: Dict) -> str:
+        """Format body differences."""
+        if not response_diff or 'body' not in response_diff:
+            return "No"
+        
+        body_diff = response_diff['body']
+        if 'json_diff' not in body_diff:
+            return "No"
+        
+        diff_summary = self._format_json_diff_summary(body_diff['json_diff'])
+        return "Yes: " + diff_summary if diff_summary != "-" else "No"
+    
+    def _format_json_diff_summary(self, json_diff: Dict, max_depth: int = 2, current_depth: int = 0) -> str:
+        """Format json_diff structure as a summary, handling nested structures."""
+        if not json_diff or current_depth >= max_depth:
+            return ""
+        
+        parts = []
+        
+        # Added items
+        if 'added' in json_diff and json_diff['added']:
+            added_items = []
+            for key, value in list(json_diff['added'].items())[:3]:  # Limit to 3 items
+                key_str = str(key)
+                if isinstance(value, dict) and ('added' in value or 'removed' in value or 'changed' in value):
+                    # Nested diff structure
+                    nested = self._format_json_diff_summary(value, max_depth, current_depth + 1)
+                    if nested and nested != "-":
+                        added_items.append(f"{key_str}({nested})")
+                    else:
+                        value_str = str(value)
+                        added_items.append(f"{key_str}: {value_str}")
+                else:
+                    value_str = str(value)
+                    added_items.append(f"{key_str}: {value_str}")
+            if added_items:
+                parts.append(f"+{', '.join(added_items)}")
+        
+        # Removed items
+        if 'removed' in json_diff and json_diff['removed']:
+            removed_items = []
+            for key, value in list(json_diff['removed'].items())[:3]:  # Limit to 3 items
+                key_str = str(key)
+                if isinstance(value, dict) and ('added' in value or 'removed' in value or 'changed' in value):
+                    # Nested diff structure
+                    nested = self._format_json_diff_summary(value, max_depth, current_depth + 1)
+                    if nested and nested != "-":
+                        removed_items.append(f"{key_str}({nested})")
+                    else:
+                        value_str = str(value)
+                        removed_items.append(f"{key_str}: {value_str}")
+                else:
+                    value_str = str(value)
+                    removed_items.append(f"{key_str}: {value_str}")
+            if removed_items:
+                parts.append(f"-{', '.join(removed_items)}")
+        
+        # Changed items
+        if 'changed' in json_diff and json_diff['changed']:
+            changed_items = []
+            for key, change in list(json_diff['changed'].items())[:3]:  # Limit to 3 items
+                key_str = str(key)
+                if isinstance(change, dict):
+                    # Check if it's a nested diff structure
+                    if 'added' in change or 'removed' in change or ('changed' in change and isinstance(change.get('changed'), dict)):
+                        nested = self._format_json_diff_summary(change, max_depth, current_depth + 1)
+                        if nested and nested != "-":
+                            changed_items.append(f"{key_str}({nested})")
+                        else:
+                            changed_items.append(f"{key_str}: changed")
+                    elif 'old' in change or 'new' in change:
+                        # Simple old/new change
+                        old_val = str(change.get('old', ''))
+                        new_val = str(change.get('new', ''))
+                        changed_items.append(f"{key_str}: {old_val}→{new_val}")
+                    else:
+                        # Nested structure
+                        nested = self._format_json_diff_summary(change, max_depth, current_depth + 1)
+                        if nested and nested != "-":
+                            changed_items.append(f"{key_str}({nested})")
+                        else:
+                            changed_items.append(f"{key_str}: changed")
+                else:
+                    changed_items.append(f"{key_str}: changed")
+            if changed_items:
+                parts.append(f"~{', '.join(changed_items)}")
+        
+        result = " | ".join(parts)
+        return result if result else ""
+    
+    def _format_response_detailed(self, response: Dict) -> str:
+        """Format response with full details for table display."""
+        if not response:
             return "-"
         
         parts = []
-        for key, value in params.items():
-            if isinstance(value, list):
-                value_str = ", ".join(str(v) for v in value)
-            else:
-                value_str = str(value)
-            parts.append(f"`{key}={value_str}`")
         
-        return "<br>".join(parts) if parts else "-"
-    
-    def _format_payload(self, payload: Any) -> str:
-        """Format payload for table display."""
-        if payload is None:
+        # Add status code if available
+        if 'status_code' in response and response['status_code'] is not None:
+            status = str(response['status_code'])
+            status = self._escape_table_cell(status)
+            parts.append(f"Status: {status}")
+        
+        # Add body if available
+        if 'body' in response and response['body'] is not None:
+            body = response['body']
+            if isinstance(body, (dict, list)):
+                try:
+                    body_str = json.dumps(body, indent=2, ensure_ascii=False)
+                    body_str = self._escape_table_cell(body_str)
+                    parts.append(f"Body:<pre>{body_str}</pre>")
+                except (TypeError, ValueError):
+                    body_str = str(body)
+                    body_str = self._escape_table_cell(body_str)
+                    parts.append(f"Body:<pre>{body_str}</pre>")
+            else:
+                body_str = str(body)
+                body_str = self._escape_table_cell(body_str)
+                parts.append(f"Body:<pre>{body_str}</pre>")
+        
+        if not parts:
             return "-"
         
-        if isinstance(payload, dict):
-            # Show a summary
-            keys = list(payload.keys())[:3]
-            if len(payload) > 3:
-                return f"`{len(payload)} fields: {', '.join(keys)}...`"
-            return f"`{', '.join(keys)}`"
-        
-        payload_str = str(payload)
-        if len(payload_str) > 50:
-            return f"`{payload_str[:50]}...`"
-        return f"`{payload_str}`"
+        return "<br>".join(parts)
     
-    def _format_value(self, value: Any) -> str:
-        """Format a value for display."""
-        if value is None:
-            return "null"
+    def _format_single_response(self, response: Dict) -> str:
+        """Format a single response (for only_in_old/only_in_new entries)."""
+        if not response:
+            return "-"
         
-        if isinstance(value, (dict, list)):
-            return json.dumps(value, indent=2)
+        # Handle error responses
+        if 'error' in response:
+            error_msg = str(response['error'])
+            error_msg = self._escape_table_cell(error_msg)
+            return f"Error: {error_msg}"
         
-        return str(value)
+        parts = []
+        
+        # Add status code if available
+        if 'status_code' in response and response['status_code'] is not None:
+            status = str(response['status_code'])
+            status = self._escape_table_cell(status)
+            parts.append(f"Status: {status}")
+        
+        # Add body if available
+        if 'body' in response and response['body'] is not None:
+            body = response['body']
+            if isinstance(body, (dict, list)):
+                try:
+                    body_str = json.dumps(body, indent=2, ensure_ascii=False)
+                    body_str = self._escape_table_cell(body_str)
+                    parts.append(f"Body:<pre>{body_str}</pre>")
+                except (TypeError, ValueError):
+                    body_str = str(body)
+                    body_str = self._escape_table_cell(body_str)
+                    parts.append(f"Body:<pre>{body_str}</pre>")
+            else:
+                body_str = str(body)
+                body_str = self._escape_table_cell(body_str)
+                parts.append(f"Body:<pre>{body_str}</pre>")
+        
+        if not parts:
+            return "-"
+        
+        return "<br>".join(parts)
     
-    def _format_value_for_table(self, value: Any) -> str:
-        """Format a value for table display (compact format)."""
-        if value is None:
-            return "`null`"
+    def _reconstruct_response(self, differences: Dict) -> tuple:
+        """Reconstruct old and new response from differences."""
+        if 'response' not in differences:
+            return None, None
         
-        if isinstance(value, (dict, list)):
-            # For complex values, use code block in table cell
-            json_str = json.dumps(value, indent=2)
-            # Escape pipe characters for markdown tables
-            json_str = json_str.replace('|', '\\|')
-            # Truncate if too long
-            if len(json_str) > 200:
-                json_str = json_str[:200] + "..."
-            return f"<pre>{json_str}</pre>"
+        response_diff = differences['response']
         
-        value_str = str(value)
-        # Escape pipe and newline characters
-        value_str = value_str.replace('|', '\\|').replace('\n', ' ')
-        # Truncate if too long
-        if len(value_str) > 100:
-            value_str = value_str[:100] + "..."
-        return f"`{value_str}`"
+        old_response = {}
+        new_response = {}
+        
+        # Status code
+        if 'status_code' in response_diff and response_diff['status_code'] is not None:
+            status = response_diff['status_code']
+            old_response['status_code'] = status.get('old')
+            new_response['status_code'] = status.get('new')
+        
+        # Body
+        if 'body' in response_diff and response_diff['body'] is not None:
+            body_diff = response_diff['body']
+            old_response['body'] = body_diff.get('old')
+            new_response['body'] = body_diff.get('new')
+        
+        return (old_response if old_response else None, new_response if new_response else None)
     
     def _reconstruct_query_params(self, differences: Dict) -> tuple:
         """Reconstruct old and new query params from differences."""
@@ -382,19 +459,6 @@ class MarkdownConverter:
             return None, None
         
         return old_payload, new_payload
-    
-    def _format_diff_summary(self, differences: Dict) -> str:
-        """Format a summary of differences."""
-        diff_types = []
-        if 'path' in differences:
-            diff_types.append('Path')
-        if 'query_params' in differences:
-            diff_types.append('Query Params')
-        if 'payload' in differences:
-            diff_types.append('Payload')
-        if 'response' in differences:
-            diff_types.append('Response')
-        return ', '.join(diff_types) if diff_types else '-'
 
 
 def main():

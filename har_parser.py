@@ -21,7 +21,7 @@ IRRELEVANT_HEADERS = {
     ':scheme', ':path', ':method', ':authority', ':status',
     # HTTP/2 pseudo-headers
     'host',  # Host header is redundant when we have :authority or URL
-    'if-none-match', 'access-token', 'content-length',
+    'if-none-match', 'access-token', 'cookie', 'set-cookie', 'content-length',
 }
 
 # Static asset extensions to filter out

@@ -5,9 +5,38 @@ from har_parser import group_apis_by_endpoint, parse_har_file
 import json
 
 
+def extract_structure(obj: Any) -> Any:
+    """
+    Extract structural representation of a JSON object, ignoring values.
+    
+    Args:
+        obj: JSON object to extract structure from
+        
+    Returns:
+        Structural representation (types, keys, nested structures)
+    """
+    if obj is None:
+        return "NoneType"
+    
+    if isinstance(obj, dict):
+        # Extract keys and recursively extract structure of values
+        return {key: extract_structure(value) for key, value in obj.items()}
+    
+    if isinstance(obj, list):
+        # Extract structure of first item (if list is non-empty), ignore length
+        if len(obj) > 0:
+            return [extract_structure(obj[0])]
+        else:
+            return []
+    
+    # For primitives, return the type name only (not the value)
+    return type(obj).__name__
+
+
 def deep_compare_json(obj1: Any, obj2: Any, path: str = "") -> List[Dict[str, Any]]:
     """
-    Deeply compare two JSON objects and return list of differences.
+    Deeply compare two JSON objects by structure (schema) and return list of differences.
+    Compares field names, types, and nested structures while ignoring example values.
     
     Args:
         obj1: First object to compare
@@ -18,10 +47,6 @@ def deep_compare_json(obj1: Any, obj2: Any, path: str = "") -> List[Dict[str, An
         List of differences with type, path, and values
     """
     differences = []
-    
-    # Both None or same value
-    if obj1 == obj2:
-        return differences
     
     # Type mismatch
     if type(obj1) != type(obj2):
@@ -53,41 +78,85 @@ def deep_compare_json(obj1: Any, obj2: Any, path: str = "") -> List[Dict[str, An
                     'legacy_value': obj1[key]
                 })
             else:
+                # Recursively compare nested structures
                 differences.extend(deep_compare_json(obj1[key], obj2[key], new_path))
     
-    # Compare lists
+    # Compare lists - ignore length, compare item structure only
     elif isinstance(obj1, list):
-        max_len = max(len(obj1), len(obj2))
-        for i in range(max_len):
-            new_path = f"{path}[{i}]" if path else f"[{i}]"
-            if i >= len(obj1):
-                differences.append({
-                    'type': 'added',
-                    'path': new_path,
-                    'nextgen_value': obj2[i]
-                })
-            elif i >= len(obj2):
-                differences.append({
-                    'type': 'removed',
-                    'path': new_path,
-                    'legacy_value': obj1[i]
-                })
-            else:
-                differences.extend(deep_compare_json(obj1[i], obj2[i], new_path))
+        # Ignore list length differences (length is variable in examples)
+        # Compare the structure of items
+        if len(obj1) > 0 and len(obj2) > 0:
+            # Both lists have items - compare structure of first item
+            item_path = f"{path}[*]" if path else "[*]"
+            differences.extend(deep_compare_json(obj1[0], obj2[0], item_path))
+        elif len(obj1) > 0 and len(obj2) == 0:
+            # Legacy has items, nextgen is empty - report that array structure was removed
+            item_path = f"{path}[*]" if path else "[*]"
+            # Extract structure to show what was removed
+            struct = extract_structure(obj1[0])
+            differences.append({
+                'type': 'removed',
+                'path': item_path,
+                'legacy_value': struct
+            })
+        elif len(obj1) == 0 and len(obj2) > 0:
+            # Legacy is empty, nextgen has items - report that array structure was added
+            item_path = f"{path}[*]" if path else "[*]"
+            # Extract structure to show what was added
+            struct = extract_structure(obj2[0])
+            differences.append({
+                'type': 'added',
+                'path': item_path,
+                'nextgen_value': struct
+            })
+        # If both are empty, no differences (same structure)
     
-    # Compare primitive values
+    # Compare primitive values - only report type mismatches, ignore value differences
     else:
-        differences.append({
-            'type': 'modified',
-            'path': path or 'root',
-            'legacy_value': obj1,
-            'nextgen_value': obj2
-        })
+        # Types already match (checked above), so no difference for structure comparison
+        # Values are ignored for structure comparison
+        pass
     
     return differences
 
 
-def compare_headers(headers1: Dict[str, str], headers2: Dict[str, str]) -> Dict[str, Any]:
+def _strip_content_disposition_filename(value: str) -> str:
+    """
+    Remove filename-related parameters from a Content-Disposition header value.
+    This lets us ignore differences where only the filename changes.
+    """
+    parts = [p.strip() for p in value.split(';')]
+    filtered = []
+    for part in parts:
+        lower = part.lower()
+        if lower.startswith('filename=') or lower.startswith('filename*='):
+            continue
+        if part:
+            filtered.append(part)
+    return '; '.join(filtered)
+
+
+def _strip_multipart_boundary(value: str) -> str:
+    """
+    Remove boundary parameter from a Content-Type header value when it's multipart/form-data.
+    This lets us ignore differences where only the boundary changes.
+    """
+    parts = [p.strip() for p in value.split(';')]
+    filtered = []
+    for part in parts:
+        lower = part.lower()
+        if lower.startswith('boundary='):
+            continue
+        if part:
+            filtered.append(part)
+    return '; '.join(filtered)
+
+
+def compare_headers(
+    headers1: Dict[str, str],
+    headers2: Dict[str, str],
+    ignore_content_disposition_filename: bool = False,
+) -> Dict[str, Any]:
     """Compare two header dictionaries."""
     all_keys = set(headers1.keys()) | set(headers2.keys())
     
@@ -98,6 +167,21 @@ def compare_headers(headers1: Dict[str, str], headers2: Dict[str, str]) -> Dict[
     for key in all_keys:
         if key in headers1 and key in headers2:
             if headers1[key] != headers2[key]:
+                # Ignore Content-Disposition filename differences if requested
+                if ignore_content_disposition_filename and key.lower() == 'content-disposition':
+                    normalized1 = _strip_content_disposition_filename(headers1[key])
+                    normalized2 = _strip_content_disposition_filename(headers2[key])
+                    if normalized1 == normalized2:
+                        continue
+                # Ignore Content-Type boundary differences for multipart/form-data
+                if key.lower() == 'content-type':
+                    value1_lower = headers1[key].lower()
+                    value2_lower = headers2[key].lower()
+                    if 'multipart/form-data' in value1_lower and 'multipart/form-data' in value2_lower:
+                        normalized1 = _strip_multipart_boundary(headers1[key])
+                        normalized2 = _strip_multipart_boundary(headers2[key])
+                        if normalized1 == normalized2:
+                            continue
                 modified[key] = {
                     'legacy': headers1[key],
                     'nextgen': headers2[key]
@@ -143,8 +227,12 @@ def compare_response_structures(legacy_entry: Dict[str, Any], nextgen_entry: Dic
         'identical': legacy_resp['status'] == nextgen_resp['status']
     }
     
-    # Compare headers
-    header_diff = compare_headers(legacy_resp['headers'], nextgen_resp['headers'])
+    # Compare headers (ignore filename changes in Content-Disposition)
+    header_diff = compare_headers(
+        legacy_resp['headers'],
+        nextgen_resp['headers'],
+        ignore_content_disposition_filename=True,
+    )
     
     # Compare body
     body_diff = None

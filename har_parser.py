@@ -22,6 +22,7 @@ IRRELEVANT_HEADERS = {
     # HTTP/2 pseudo-headers
     'host',  # Host header is redundant when we have :authority or URL
     'if-none-match', 'access-token', 'cookie', 'set-cookie', 'content-length',
+    'sec-fetch-user', 'upgrade-insecure-requests', 'accept'
 }
 
 # Static asset extensions to filter out

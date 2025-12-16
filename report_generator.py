@@ -51,13 +51,17 @@ def format_differences(differences: List[Dict[str, Any]]) -> str:
         path = diff.get('path', 'unknown')
         
         if diff_type == 'added':
-            lines.append(f"- **Added** at `{path}`: {format_json_value(diff.get('nextgen_value'))}")
+            lines.append(f"- **Added** at `{path}`:")
+            lines.append(f"{format_json_value(diff.get('nextgen_value'))}")
         elif diff_type == 'removed':
-            lines.append(f"- **Removed** at `{path}`: {format_json_value(diff.get('legacy_value'))}")
+            lines.append(f"- **Removed** at `{path}`:")
+            lines.append(f"{format_json_value(diff.get('legacy_value'))}")
         elif diff_type == 'modified':
             lines.append(f"- **Modified** at `{path}`:")
-            lines.append(f"  - Legacy: {format_json_value(diff.get('legacy_value'))}")
-            lines.append(f"  - Nextgen: {format_json_value(diff.get('nextgen_value'))}")
+            lines.append(f"  - Legacy:")
+            lines.append(f"{format_json_value(diff.get('legacy_value'))}")
+            lines.append(f"  - Nextgen:")
+            lines.append(f"{format_json_value(diff.get('nextgen_value'))}")
         elif diff_type == 'type_mismatch':
             lines.append(f"- **Type mismatch** at `{path}`:")
             lines.append(f"  - Legacy type: `{diff.get('legacy')}`")

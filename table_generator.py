@@ -1,223 +1,86 @@
-"""Table generator for API comparison results."""
+#!/usr/bin/env python3
+"""Script to process all modules and generate separate comparison tables."""
 
-import json
-from typing import Dict, Any, List
-from urllib.parse import urlparse
-from har_parser import parse_har_file, group_apis_by_endpoint
-from comparison_engine import compare_request_structures, compare_response_structures
-from report_generator import format_differences, format_header_comparison
+import os
+import sys
+from pathlib import Path
+from libs.table_helper import parse_har_file, compare_request_structures, compare_response_structures, format_request_for_table, format_response_for_table, format_cell_content, format_changes
+from libs.har_parser import group_apis_by_name
 
-
-def format_json_for_table(value: Any) -> str:
-    """Format JSON value as code block for table cell."""
-    if value is None:
-        return "`null`"
-    if isinstance(value, dict):
-        if not value:
-            return "`{}`"
-        # Format as JSON code block
-        json_str = json.dumps(value, indent=2)
-        return f"```json\n{json_str}\n```"
-    if isinstance(value, list):
-        if not value:
-            return "`[]`"
-        # Format as JSON code block
-        json_str = json.dumps(value, indent=2)
-        return f"```json\n{json_str}\n```"
-    if isinstance(value, str):
-        # If it's a long string, keep it as is but wrap in backticks
-        return f"`{value}`"
-    return f"`{value}`"
-
-
-def extract_url_path(url: str) -> str:
-    """Extract path from URL, ignoring hostname and schema."""
-    parsed = urlparse(url)
-    # Return path with query string if present
-    if parsed.query:
-        return f"{parsed.path}?{parsed.query}"
-    return parsed.path
+def find_modules(materials_dir: Path) -> list[str]:
+    """
+    Find all module directories in the materials directory.
+    
+    A valid module directory must contain both 'legacy' and 'nextgen' files.
+    
+    Args:
+        materials_dir: Path to materials directory
+        
+    Returns:
+        List of module names
+    """
+    modules = []
+    
+    if not materials_dir.exists():
+        return modules
+    
+    for item in materials_dir.iterdir():
+        if item.is_dir():
+            legacy_file = item / 'legacy'
+            nextgen_file = item / 'nextgen'
+            
+            # Check if both files exist
+            if legacy_file.exists() and nextgen_file.exists():
+                modules.append(item.name)
+    
+    return modules
 
 
-def format_request_for_table(entry: Dict[str, Any]) -> str:
-    """Format request for table cell display."""
-    parts = []
+def process_module(module_name: str, materials_dir: Path, output_dir: Path) -> bool:
+    """
+    Process a single module and generate its comparison table.
     
-    # URL (only path, no schema/host)
-    url = entry.get('original_url', '')
-    if url:
-        url_path = extract_url_path(url)
-        parts.append(f"**URL:** `{url_path}`")
+    Args:
+        module_name: Name of the module
+        materials_dir: Path to materials directory
+        output_dir: Path to output directory
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    module_dir = materials_dir / module_name
+    legacy_file = module_dir / 'legacy'
+    nextgen_file = module_dir / 'nextgen'
+    output_file = output_dir / f'comparison_table_{module_name}.md'
     
-    # Method
-    method = entry.get('method', '')
-    if method:
-        parts.append(f"**Method:** `{method}`")
-    
-    # Headers
-    headers = entry.get('request', {}).get('headers', {})
-    if headers:
-        parts.append("**Headers:**")
-        parts.append(format_json_for_table(headers))
-    
-    # Body
-    body = entry.get('request', {}).get('body')
-    if body:
-        parts.append("**Body:**")
-        parts.append(format_json_for_table(body))
-    
-    if not parts:
-        return "*No request data*"
-    
-    return "\n\n".join(parts)
-
-
-def format_response_for_table(entry: Dict[str, Any]) -> str:
-    """Format response for table cell display."""
-    parts = []
-    
-    # Status code
-    status = entry.get('response', {}).get('status', 0)
-    if status:
-        parts.append(f"**Status:** `{status}`")
-    
-    # Headers
-    headers = entry.get('response', {}).get('headers', {})
-    if headers:
-        parts.append("**Headers:**")
-        parts.append(format_json_for_table(headers))
-    
-    # Body
-    body = entry.get('response', {}).get('body')
-    if body:
-        parts.append("**Body:**")
-        parts.append(format_json_for_table(body))
-    
-    if not parts:
-        return "*No response data*"
-    
-    return "\n\n".join(parts)
-
-
-def format_comments(
-    legacy_entry: Dict[str, Any],
-    nextgen_entry: Dict[str, Any],
-    request_diff: Dict[str, Any] = None,
-    response_diff: Dict[str, Any] = None,
-) -> str:
-    """Format differences as comments for the table."""
-    comments = []
-    
-    # Compare requests
-    if request_diff is None:
-        request_diff = compare_request_structures(legacy_entry, nextgen_entry)
-    
-    # Method differences
-    if not request_diff.get('method_identical'):
-        comments.append("- **Request Method:** Methods differ")
-    
-    # Request header differences
-    if not request_diff['headers'].get('identical'):
-        header_comp = format_header_comparison(request_diff['headers'])
-        if header_comp and header_comp != "Headers are identical":
-            comments.append("- **Request Headers:**")
-            # Format as bullet points
-            for line in header_comp.split('\n'):
-                if line.strip():
-                    comments.append(f"  {line}")
-    
-    # Request body differences
-    if request_diff.get('body'):
-        comments.append("- **Request Body:**")
-        body_diffs = format_differences(request_diff['body'])
-        for line in body_diffs.split('\n'):
-            if line.strip():
-                comments.append(f"  {line}")
-    
-    # Compare responses
-    if response_diff is None:
-        response_diff = compare_response_structures(legacy_entry, nextgen_entry)
-    
-    # Status code differences
-    if not response_diff['status'].get('identical'):
-        legacy_status = response_diff['status'].get('legacy', 'N/A')
-        nextgen_status = response_diff['status'].get('nextgen', 'N/A')
-        comments.append(f"- **Response Status:** Legacy `{legacy_status}` → Nextgen `{nextgen_status}`")
-    
-    # Response header differences
-    if not response_diff['headers'].get('identical'):
-        header_comp = format_header_comparison(response_diff['headers'])
-        if header_comp and header_comp != "Headers are identical":
-            comments.append("- **Response Headers:**")
-            for line in header_comp.split('\n'):
-                if line.strip():
-                    comments.append(f"  {line}")
-    
-    # Response body differences
-    if response_diff.get('body'):
-        comments.append("- **Response Body:**")
-        body_diffs = format_differences(response_diff['body'])
-        for line in body_diffs.split('\n'):
-            if line.strip():
-                comments.append(f"  {line}")
-    
-    if not comments:
-        return "✅ No differences"
-    
-    return "\n".join(comments)
-
-
-def format_cell_content(text: str) -> str:
-    """Format text for HTML table cell, preserving code blocks and converting markdown."""
-    import html
-    import re
-    
-    lines = text.split('\n')
-    result = []
-    in_code_block = False
-    code_block_lines = []
-    
-    def convert_markdown_to_html(line: str) -> str:
-        """Convert markdown formatting to HTML after escaping."""
-        # First escape HTML special characters
-        escaped = html.escape(line)
-        # Then convert markdown to HTML (on the escaped text)
-        # Convert **bold** to <strong>bold</strong>
-        escaped = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', escaped)
-        # Convert `code` to <code>code</code> (but not inside <code> tags)
-        escaped = re.sub(r'`([^`<]+)`', r'<code>\1</code>', escaped)
-        return escaped
-    
-    for line in lines:
-        stripped = line.strip()
-        if stripped.startswith('```'):
-            # End current code block if we're in one
-            if in_code_block:
-                # Close the code block
-                code_content = '\n'.join(code_block_lines)
-                result.append(f'<pre><code class="language-json">{html.escape(code_content)}</code></pre>')
-                code_block_lines = []
-                in_code_block = False
-            else:
-                # Start new code block
-                in_code_block = True
-                # Skip the ```json line
-        elif in_code_block:
-            code_block_lines.append(line)
-        else:
-            # Regular line - convert markdown to HTML
-            if line.strip():
-                converted = convert_markdown_to_html(line)
-                result.append(converted)
-            else:
-                result.append('')
-    
-    # Handle case where code block is at the end
-    if in_code_block and code_block_lines:
-        code_content = '\n'.join(code_block_lines)
-        result.append(f'<pre><code class="language-json">{html.escape(code_content)}</code></pre>')
-    
-    return '<br>'.join(result) if result else ''
+    try:
+        print(f"\nProcessing module: {module_name}")
+        print(f"  - Legacy: {legacy_file}")
+        print(f"  - Nextgen: {nextgen_file}")
+        
+        # Generate table with name-based matching
+        print("  Generating comparison table...")
+        table = generate_comparison_table(
+            str(legacy_file),
+            str(nextgen_file)
+        )
+        
+        # Save table
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write(table)
+        
+        print(f"  ✓ Table saved to: {output_file}")
+        return True
+        
+    except ValueError as e:
+        print(f"  ✗ Error: {e}", file=sys.stderr)
+        return False
+    except Exception as e:
+        print(f"  ✗ Unexpected error: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return False
 
 
 def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
@@ -235,15 +98,15 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
     legacy_entries = parse_har_file(legacy_file)
     nextgen_entries = parse_har_file(nextgen_file)
     
-    # Group by endpoint
-    legacy_grouped = group_apis_by_endpoint(legacy_entries)
-    nextgen_grouped = group_apis_by_endpoint(nextgen_entries)
+    # Group by name
+    legacy_grouped = group_apis_by_name(legacy_entries)
+    nextgen_grouped = group_apis_by_name(nextgen_entries)
     
-    # Find common endpoints
-    common_endpoints = set(legacy_grouped.keys()) & set(nextgen_grouped.keys())
+    # Find common keys
+    common_keys = set(legacy_grouped.keys()) & set(nextgen_grouped.keys())
     
-    if not common_endpoints:
-        return "# API Comparison Table\n\nNo common endpoints found.\n"
+    if not common_keys:
+        return "# API Comparison Table\n\nNo common keys found.\n"
     
     lines = []
     lines.append("# API Comparison Table")
@@ -274,9 +137,9 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
     lines.append('<tbody>')
     
     # Generate rows for each common endpoint
-    for endpoint in sorted(common_endpoints):
-        legacy_entry = legacy_grouped[endpoint][0]  # Use first occurrence
-        nextgen_entry = nextgen_grouped[endpoint][0]  # Use first occurrence
+    for key in sorted(common_keys):
+        legacy_entry = legacy_grouped[key][0]  # Use first occurrence
+        nextgen_entry = nextgen_grouped[key][0]  # Use first occurrence
         
         # Compute diffs once for reuse
         request_diff = compare_request_structures(legacy_entry, nextgen_entry)
@@ -295,7 +158,7 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
         nextgen_request = format_request_for_table(nextgen_entry)
         legacy_response = format_response_for_table(legacy_entry)
         nextgen_response = format_response_for_table(nextgen_entry)
-        comments = format_comments(
+        changes = format_changes(
             legacy_entry,
             nextgen_entry,
             request_diff=request_diff,
@@ -307,7 +170,7 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
         nextgen_request_cell = format_cell_content(nextgen_request)
         legacy_response_cell = format_cell_content(legacy_response)
         nextgen_response_cell = format_cell_content(nextgen_response)
-        comments_cell = format_cell_content(comments)
+        changes_cell = format_cell_content(changes)
         
         # Create table row
         lines.append('<tr>')
@@ -316,7 +179,7 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
         lines.append(f'<td>{nextgen_request_cell}</td>')
         lines.append(f'<td>{legacy_response_cell}</td>')
         lines.append(f'<td>{nextgen_response_cell}</td>')
-        lines.append(f'<td>{comments_cell}</td>')
+        lines.append(f'<td>{changes_cell}</td>')
         lines.append('</tr>')
     
     lines.append('</tbody>')
@@ -326,47 +189,45 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
 
 
 def main():
-    """Main entry point for table generation."""
-    import os
-    import sys
-    from pathlib import Path
-    
+    """Main entry point for module processing."""
     # Get project root directory
     project_root = Path(__file__).parent
     
-    # Define file paths
-    legacy_file = project_root / 'materials' / 'legacy'
-    nextgen_file = project_root / 'materials' / 'nextgen'
+    # Define directories
+    materials_dir = project_root / 'materials'
     output_dir = project_root / 'out'
-    output_file = output_dir / 'comparison_table.md'
     
-    # Check if input files exist
-    if not legacy_file.exists():
-        print(f"Error: Legacy HAR file not found at {legacy_file}", file=sys.stderr)
-        sys.exit(1)
-    
-    if not nextgen_file.exists():
-        print(f"Error: Nextgen HAR file not found at {nextgen_file}", file=sys.stderr)
+    # Check if materials directory exists
+    if not materials_dir.exists():
+        print(f"Error: Materials directory not found at {materials_dir}", file=sys.stderr)
         sys.exit(1)
     
     # Create output directory if it doesn't exist
     output_dir.mkdir(exist_ok=True)
     
-    print("Parsing HAR files...")
-    print(f"  - Legacy: {legacy_file}")
-    print(f"  - Nextgen: {nextgen_file}")
+    # Find all modules
+    print("Scanning for modules...")
+    modules = find_modules(materials_dir)
     
-    # Generate table
-    print("\nGenerating comparison table...")
-    table = generate_comparison_table(str(legacy_file), str(nextgen_file))
+    if not modules:
+        print("No modules found. A module directory must contain both 'legacy' and 'nextgen' files.")
+        sys.exit(1)
     
-    # Save table
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(table)
+    print(f"Found {len(modules)} module(s): {', '.join(modules)}")
     
-    print(f"\nTable saved to: {output_file}")
+    # Process each module
+    success_count = 0
+    for module_name in modules:
+        if process_module(module_name, materials_dir, output_dir):
+            success_count += 1
+    
+    # Print summary
+    print(f"\n{'='*60}")
+    print(f"Summary: {success_count}/{len(modules)} module(s) processed successfully")
+    
+    if success_count < len(modules):
+        sys.exit(1)
 
 
 if __name__ == '__main__':
     main()
-

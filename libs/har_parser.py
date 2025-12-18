@@ -114,12 +114,13 @@ def extract_response_body(entry: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     return {'_raw': text, '_mime_type': mime_type}
 
 
-def parse_har_file(file_path: str) -> List[Dict[str, Any]]:
+def parse_har_file(file_path: str, require_name: bool = False) -> List[Dict[str, Any]]:
     """
     Parse HAR file and extract API requests/responses.
     
     Args:
         file_path: Path to HAR file
+        require_name: If True, validate that each entry has a 'name' field
         
     Returns:
         List of API entries with normalized data
@@ -137,6 +138,14 @@ def parse_har_file(file_path: str) -> List[Dict[str, Any]]:
         # Skip static assets
         if not is_api_request(url):
             continue
+        
+        # Extract name field if present
+        name = entry.get('name')
+        
+        # Validate name field if required
+        if require_name:
+            if not name:
+                raise ValueError(f"Entry missing 'name' field: {url}")
         
         # Normalize URL
         normalized_path = normalize_url(url)
@@ -167,25 +176,33 @@ def parse_har_file(file_path: str) -> List[Dict[str, Any]]:
             }
         }
         
+        # Add name field if present
+        if name is not None:
+            api_entry['name'] = name
+        
         api_entries.append(api_entry)
     
     return api_entries
 
-
-def group_apis_by_endpoint(api_entries: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
+def group_apis_by_name(api_entries: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
     """
-    Group API entries by normalized endpoint path and HTTP method.
+    Group API entries by their 'name' field.
     
     Args:
         api_entries: List of parsed API entries
         
     Returns:
-        Dictionary mapping "METHOD /path" to list of entries
+        Dictionary mapping name to list of entries
+        
+    Raises:
+        ValueError: If any entry is missing the 'name' field
     """
     grouped = {}
     for entry in api_entries:
-        key = f"{entry['method']} {entry['normalized_path']}"
-        if key not in grouped:
-            grouped[key] = []
-        grouped[key].append(entry)
+        if 'name' not in entry:
+            raise ValueError(f"Entry missing 'name' field: {entry.get('original_url', 'unknown')}")
+        name = entry['name']
+        if name not in grouped:
+            grouped[name] = []
+        grouped[name].append(entry)
     return grouped

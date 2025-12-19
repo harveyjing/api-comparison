@@ -1,0 +1,661 @@
+{
+    "log": {
+        "version": "1.2",
+        "creator": {
+            "name": "mitmproxy",
+            "version": "12.2.1",
+            "comment": ""
+        },
+        "pages": [],
+        "entries": [
+            {
+                "startedDateTime": "2025-12-19T05:58:31.543911+00:00",
+                "time": 78.7956714630127,
+                "request": {
+                    "method": "POST",
+                    "url": "https://access-web-2026-0:4443/pbsworks/api/preferences/userpreferences",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Host",
+                            "value": "access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Content-Length",
+                            "value": "2"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "User-Agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "Origin",
+                            "value": "https://access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Sec-Fetch-Site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "Sec-Fetch-Mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "Sec-Fetch-Dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "Referer",
+                            "value": "https://access-web-2026-0:4443/pbsworks/preferences"
+                        },
+                        {
+                            "name": "Accept-Encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "Accept-Language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw; refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2502,
+                    "bodySize": 2,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Date",
+                            "value": "Thu, 18 Dec 2025 20:52:30 GMT"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Server",
+                            "value": "nginx-clojure"
+                        },
+                        {
+                            "name": "X-Content-Type-Options",
+                            "value": "nosniff"
+                        },
+                        {
+                            "name": "X-XSS-Protection",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Cache-Control",
+                            "value": "no-cache, no-store, max-age=0, must-revalidate"
+                        },
+                        {
+                            "name": "Pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "Expires",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Strict-Transport-Security",
+                            "value": "max-age=31536000 ; includeSubDomains"
+                        },
+                        {
+                            "name": "vary",
+                            "value": "accept-encoding"
+                        },
+                        {
+                            "name": "Content-Encoding",
+                            "value": "gzip"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        }
+                    ],
+                    "content": {
+                        "size": 1034,
+                        "compression": 4120,
+                        "mimeType": "application/json",
+                        "text": "[{\"id\":52,\"category\":\"Theme\",\"name\":\"theme\",\"userName\":\"pbsworks\",\"displayName\":\"Theme name\",\"type\":\"OPTION\",\"value\":\"White\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"White\",\"option\":\"White\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":53,\"category\":\"Theme\",\"name\":\"font size\",\"userName\":\"pbsworks\",\"displayName\":\"Font Size\",\"type\":\"OPTION\",\"value\":\"12px\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"11px\",\"option\":\"11px\"},{\"value\":\"12px\",\"option\":\"12px\"},{\"value\":\"13px\",\"option\":\"13px\"},{\"value\":\"14px\",\"option\":\"14px\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":54,\"category\":\"Profile\",\"name\":\"name\",\"userName\":\"pbsworks\",\"displayName\":\"Name\",\"type\":\"STRING\",\"value\":\"\",\"groupBy\":\"About\",\"data\":{\"max\":20.0,\"min\":1.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"Type your name...\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":55,\"category\":\"Profile\",\"name\":\"email\",\"userName\":\"pbsworks\",\"displayName\":\"Email\",\"type\":\"STRING\",\"value\":\"\",\"groupBy\":\"About\",\"data\":{\"max\":200.0,\"min\":0.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"Eg: alen@altair.com\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":56,\"category\":\"Notifications\",\"name\":\"show_notification\",\"userName\":\"pbsworks\",\"displayName\":\"Show Notification\",\"type\":\"BOOLEAN\",\"value\":\"true\",\"groupBy\":\"Application\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":57,\"category\":\"Files\",\"name\":\"show_hidden_file\",\"userName\":\"pbsworks\",\"displayName\":\"Hidden items\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Show or hide the files and folders that are marked as hidden\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":58,\"category\":\"Job Submission\",\"name\":\"aborted\",\"userName\":\"pbsworks\",\"displayName\":\"Aborted\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":59,\"category\":\"Job Submission\",\"name\":\"beginsexecution\",\"userName\":\"pbsworks\",\"displayName\":\"Begins Execution\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":60,\"category\":\"Job Submission\",\"name\":\"endsexecution\",\"userName\":\"pbsworks\",\"displayName\":\"Ends Execution\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":61,\"category\":\"Job Submission\",\"name\":\"post_job_submission_redirect\",\"userName\":\"pbsworks\",\"displayName\":\"Close submission Form after submission?\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Close submission Form\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":62,\"category\":\"Job Submission\",\"name\":\"defaultprofile\",\"userName\":\"pbsworks\",\"displayName\":\"Default Profile\",\"type\":\"OPTION\",\"value\":\"Generic\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"Generic\",\"option\":\"Generic\"},{\"value\":\"LastSubmitted\",\"option\":\"Last Submitted\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":63,\"category\":\"Pagination\",\"name\":\"pagination_size\",\"userName\":\"pbsworks\",\"displayName\":\"Page Size\",\"type\":\"OPTION\",\"value\":\"50\",\"groupBy\":\"Pagination\",\"data\":{\"options\":[{\"value\":25.0,\"option\":\"25\"},{\"value\":50.0,\"option\":\"50\"},{\"value\":75.0,\"option\":\"75\"},{\"value\":100.0,\"option\":\"100\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":64,\"category\":\"Tail Frequency\",\"name\":\"tail_frequency\",\"userName\":\"pbsworks\",\"displayName\":\"Tail Frequency\",\"type\":\"OPTION\",\"value\":\"1000\",\"groupBy\":null,\"data\":{\"options\":[{\"value\":1000.0,\"option\":\"1s\"},{\"value\":2000.0,\"option\":\"2s\"},{\"value\":3000.0,\"option\":\"3s\"},{\"value\":4000.0,\"option\":\"4s\"},{\"value\":5000.0,\"option\":\"5s\"},{\"value\":10000.0,\"option\":\"10s\"},{\"value\":20000.0,\"option\":\"20s\"},{\"value\":30000.0,\"option\":\"30s\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":65,\"category\":\"RVS\",\"name\":\"autorefreshtime\",\"userName\":\"pbsworks\",\"displayName\":\"Auto Refresh Time (minute)\",\"type\":\"STRING\",\"value\":\"1\",\"groupBy\":\"\",\"data\":{\"max\":100.0,\"min\":1.0,\"type\":\"number\",\"style\":\"autorefreshtime_component\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":66,\"category\":\"Desktops\",\"name\":\"defaultresolution\",\"userName\":\"pbsworks\",\"displayName\":\"Default Desktop Resolution\",\"type\":\"STRING\",\"value\":\"1600x1200\",\"groupBy\":\"\",\"data\":{\"max\":20.0,\"min\":1.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"WidthxHeight\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":67,\"category\":\"Desktops\",\"name\":\"enable_desktop_debugging\",\"userName\":\"pbsworks\",\"displayName\":\"Enable Debugging Logs\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":68,\"category\":\"Desktops\",\"name\":\"enable_desktop_stats\",\"userName\":\"pbsworks\",\"displayName\":\"Enable Statistics\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true}]"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2256,
+                    "bodySize": 1034
+                },
+                "cache": {},
+                "timings": {
+                    "connect": 15.397310256958008,
+                    "ssl": 30.654191970825195,
+                    "send": 3.1290054321289062,
+                    "receive": 1.45721435546875,
+                    "wait": 28.157949447631836
+                },
+                "serverIPAddress": "192.168.111.141"
+            },
+            {
+                "startedDateTime": "2025-12-19T06:00:03.974469+00:00",
+                "time": 57.48438835144043,
+                "request": {
+                    "method": "PUT",
+                    "url": "https://access-web-2026-0:4443/pbsworks/api/preferences/userpreferences",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Host",
+                            "value": "access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Content-Length",
+                            "value": "29"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "User-Agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "Origin",
+                            "value": "https://access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Sec-Fetch-Site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "Sec-Fetch-Mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "Sec-Fetch-Dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "Referer",
+                            "value": "https://access-web-2026-0:4443/pbsworks/preferences"
+                        },
+                        {
+                            "name": "Accept-Encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "Accept-Language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw; refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2503,
+                    "bodySize": 29,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{\"data\":{\"reset_all\":\"true\"}}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Date",
+                            "value": "Thu, 18 Dec 2025 20:54:10 GMT"
+                        },
+                        {
+                            "name": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Server",
+                            "value": "nginx-clojure"
+                        },
+                        {
+                            "name": "X-Content-Type-Options",
+                            "value": "nosniff"
+                        },
+                        {
+                            "name": "X-XSS-Protection",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Cache-Control",
+                            "value": "no-cache, no-store, max-age=0, must-revalidate"
+                        },
+                        {
+                            "name": "Pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "Expires",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Strict-Transport-Security",
+                            "value": "max-age=31536000 ; includeSubDomains"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        }
+                    ],
+                    "content": {
+                        "size": 0,
+                        "compression": 0,
+                        "mimeType": "",
+                        "text": ""
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2153,
+                    "bodySize": 0
+                },
+                "cache": {},
+                "timings": {
+                    "connect": 9.217977523803711,
+                    "ssl": 27.755260467529297,
+                    "send": 1.9688606262207031,
+                    "receive": 1.794576644897461,
+                    "wait": 16.747713088989258
+                },
+                "serverIPAddress": "192.168.111.141"
+            },
+            {
+                "startedDateTime": "2025-12-19T06:00:07.172950+00:00",
+                "time": 70.43838500976562,
+                "request": {
+                    "method": "POST",
+                    "url": "https://access-web-2026-0:4443/pbsworks/api/preferences/userpreferences/reset",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Host",
+                            "value": "access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Content-Length",
+                            "value": "2"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        },
+                        {
+                            "name": "User-Agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "Origin",
+                            "value": "https://access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Sec-Fetch-Site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "Sec-Fetch-Mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "Sec-Fetch-Dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "Referer",
+                            "value": "https://access-web-2026-0:4443/pbsworks/preferences"
+                        },
+                        {
+                            "name": "Accept-Encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "Accept-Language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw; refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2502,
+                    "bodySize": 2,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Date",
+                            "value": "Thu, 18 Dec 2025 20:54:14 GMT"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Server",
+                            "value": "nginx-clojure"
+                        },
+                        {
+                            "name": "X-Content-Type-Options",
+                            "value": "nosniff"
+                        },
+                        {
+                            "name": "X-XSS-Protection",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Cache-Control",
+                            "value": "no-cache, no-store, max-age=0, must-revalidate"
+                        },
+                        {
+                            "name": "Pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "Expires",
+                            "value": "0"
+                        },
+                        {
+                            "name": "Strict-Transport-Security",
+                            "value": "max-age=31536000 ; includeSubDomains"
+                        },
+                        {
+                            "name": "vary",
+                            "value": "accept-encoding"
+                        },
+                        {
+                            "name": "Content-Encoding",
+                            "value": "gzip"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "refresh_token=CiZ2Y2JkdWVvZ3RnejRob3d3anZidm5ob252aW92eGg1bm00eng0MhIma2diYnFrYzJoa3JjcHoyZ3R5Mmp4bjQ2ZnUzc2sydGp6d2QzMm8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZjllOWJiYWEzMmQ0OTlkMzk2NDI5NjBmMjU5MjY0ODI3MjdkZDUifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjEwMTg4OCwiaWF0IjoxNzY2MDkxMDg4LCJhdF9oYXNoIjoiSUl1YjVBekFsX1VRU09YdllNd0hzUSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.DVlF35GsXy3HVr_ixlBMpAwbh9lH3YavW9lwCve_iTX_H9i0kdnOifOH6POsTtFwXleM3-REtTD41GY1SV_-rTMW4iN8Y6cwukDPGXbs2uNFLTatbLWS9wZorgOr7MlOzWx2HPUaSTIgeEl5T83kH6fU8w1G76b1btHwsiDYLbDJjgZe9y1K9oDJ79lJ5GHKfrWChugLxUS-TE-wsCzbHWrGvt814Lz0AdOeb8rTnsUU0NSd0Lv7gLrldsncbpUJPILBv1xuDAiCWZ1TDf_COxlhPXa1RNL7N5YJauJuydLV4r49k6zh8SdWsORh9bc4dwNBuOGapp6ZXlFgcKV9Uw"
+                        }
+                    ],
+                    "content": {
+                        "size": 1035,
+                        "compression": 4119,
+                        "mimeType": "application/json",
+                        "text": "[{\"id\":69,\"category\":\"Theme\",\"name\":\"theme\",\"userName\":\"pbsworks\",\"displayName\":\"Theme name\",\"type\":\"OPTION\",\"value\":\"White\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"White\",\"option\":\"White\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":70,\"category\":\"Theme\",\"name\":\"font size\",\"userName\":\"pbsworks\",\"displayName\":\"Font Size\",\"type\":\"OPTION\",\"value\":\"12px\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"11px\",\"option\":\"11px\"},{\"value\":\"12px\",\"option\":\"12px\"},{\"value\":\"13px\",\"option\":\"13px\"},{\"value\":\"14px\",\"option\":\"14px\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":71,\"category\":\"Profile\",\"name\":\"name\",\"userName\":\"pbsworks\",\"displayName\":\"Name\",\"type\":\"STRING\",\"value\":\"\",\"groupBy\":\"About\",\"data\":{\"max\":20.0,\"min\":1.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"Type your name...\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":72,\"category\":\"Profile\",\"name\":\"email\",\"userName\":\"pbsworks\",\"displayName\":\"Email\",\"type\":\"STRING\",\"value\":\"\",\"groupBy\":\"About\",\"data\":{\"max\":200.0,\"min\":0.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"Eg: alen@altair.com\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":73,\"category\":\"Notifications\",\"name\":\"show_notification\",\"userName\":\"pbsworks\",\"displayName\":\"Show Notification\",\"type\":\"BOOLEAN\",\"value\":\"true\",\"groupBy\":\"Application\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":74,\"category\":\"Files\",\"name\":\"show_hidden_file\",\"userName\":\"pbsworks\",\"displayName\":\"Hidden items\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Show or hide the files and folders that are marked as hidden\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":75,\"category\":\"Job Submission\",\"name\":\"aborted\",\"userName\":\"pbsworks\",\"displayName\":\"Aborted\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":76,\"category\":\"Job Submission\",\"name\":\"beginsexecution\",\"userName\":\"pbsworks\",\"displayName\":\"Begins Execution\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":77,\"category\":\"Job Submission\",\"name\":\"endsexecution\",\"userName\":\"pbsworks\",\"displayName\":\"Ends Execution\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Notify when job state changes to\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":78,\"category\":\"Job Submission\",\"name\":\"post_job_submission_redirect\",\"userName\":\"pbsworks\",\"displayName\":\"Close submission Form after submission?\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"Close submission Form\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":79,\"category\":\"Job Submission\",\"name\":\"defaultprofile\",\"userName\":\"pbsworks\",\"displayName\":\"Default Profile\",\"type\":\"OPTION\",\"value\":\"Generic\",\"groupBy\":\"\",\"data\":{\"options\":[{\"value\":\"Generic\",\"option\":\"Generic\"},{\"value\":\"LastSubmitted\",\"option\":\"Last Submitted\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":80,\"category\":\"Pagination\",\"name\":\"pagination_size\",\"userName\":\"pbsworks\",\"displayName\":\"Page Size\",\"type\":\"OPTION\",\"value\":\"50\",\"groupBy\":\"Pagination\",\"data\":{\"options\":[{\"value\":25.0,\"option\":\"25\"},{\"value\":50.0,\"option\":\"50\"},{\"value\":75.0,\"option\":\"75\"},{\"value\":100.0,\"option\":\"100\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":81,\"category\":\"Tail Frequency\",\"name\":\"tail_frequency\",\"userName\":\"pbsworks\",\"displayName\":\"Tail Frequency\",\"type\":\"OPTION\",\"value\":\"1000\",\"groupBy\":null,\"data\":{\"options\":[{\"value\":1000.0,\"option\":\"1s\"},{\"value\":2000.0,\"option\":\"2s\"},{\"value\":3000.0,\"option\":\"3s\"},{\"value\":4000.0,\"option\":\"4s\"},{\"value\":5000.0,\"option\":\"5s\"},{\"value\":10000.0,\"option\":\"10s\"},{\"value\":20000.0,\"option\":\"20s\"},{\"value\":30000.0,\"option\":\"30s\"}]},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":82,\"category\":\"RVS\",\"name\":\"autorefreshtime\",\"userName\":\"pbsworks\",\"displayName\":\"Auto Refresh Time (minute)\",\"type\":\"STRING\",\"value\":\"1\",\"groupBy\":\"\",\"data\":{\"max\":100.0,\"min\":1.0,\"type\":\"number\",\"style\":\"autorefreshtime_component\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":83,\"category\":\"Desktops\",\"name\":\"defaultresolution\",\"userName\":\"pbsworks\",\"displayName\":\"Default Desktop Resolution\",\"type\":\"STRING\",\"value\":\"1600x1200\",\"groupBy\":\"\",\"data\":{\"max\":20.0,\"min\":1.0,\"style\":\"\",\"isInline\":true,\"isRequired\":false,\"placeHolder\":\"WidthxHeight\"},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":84,\"category\":\"Desktops\",\"name\":\"enable_desktop_debugging\",\"userName\":\"pbsworks\",\"displayName\":\"Enable Debugging Logs\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true},{\"id\":85,\"category\":\"Desktops\",\"name\":\"enable_desktop_stats\",\"userName\":\"pbsworks\",\"displayName\":\"Enable Statistics\",\"type\":\"BOOLEAN\",\"value\":\"false\",\"groupBy\":\"\",\"data\":{},\"version\":0,\"visible\":true,\"enforced\":false,\"private\":true}]"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2256,
+                    "bodySize": 1035
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 2.28118896484375,
+                    "receive": 1.0180473327636719,
+                    "wait": 67.1391487121582
+                },
+                "serverIPAddress": "192.168.111.141"
+            }
+        ]
+    }
+}

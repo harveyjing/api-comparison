@@ -1,0 +1,808 @@
+{
+    "log": {
+        "version": "1.2",
+        "creator": {
+            "name": "mitmproxy",
+            "version": "12.2.1",
+            "comment": ""
+        },
+        "pages": [],
+        "entries": [
+            {
+                "startedDateTime": "2025-12-19T03:13:21.321679+00:00",
+                "time": 180.29189109802246,
+                "request": {
+                    "method": "POST",
+                    "url": "https://access-web.wjing.xyz/pbsworks/api/Service1/pas/restservice/files/expandvars",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "content-length",
+                            "value": "19"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "user-agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "origin",
+                            "value": "https://access-web.wjing.xyz"
+                        },
+                        {
+                            "name": "sec-fetch-site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "sec-fetch-mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "sec-fetch-dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "referer",
+                            "value": "https://access-web.wjing.xyz/pbsworks/servermanagement"
+                        },
+                        {
+                            "name": "accept-encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "accept-language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        },
+                        {
+                            "name": "priority",
+                            "value": "u=1, i"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2470,
+                    "bodySize": 19,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{\"paths\":[\"$HOME\"]}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "date",
+                            "value": "Fri, 19 Dec 2025 03:13:21 GMT"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "server",
+                            "value": "cloudflare"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "nel",
+                            "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                        },
+                        {
+                            "name": "cf-cache-status",
+                            "value": "DYNAMIC"
+                        },
+                        {
+                            "name": "report-to",
+                            "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Twm5Au%2B7UnlAD%2B4BRLvrsOulWUtZ5vM6fqj7j%2BPtjIfhZQszbhPjdbc3C1aE%2F%2FhTEhio8fTzNiLuiBdy9zIOw05FXr5wVakfRBi2sbYJl816u8ci\"}]}"
+                        },
+                        {
+                            "name": "content-encoding",
+                            "value": "zstd"
+                        },
+                        {
+                            "name": "cf-ray",
+                            "value": "9b03b93c59695dd9-HKG"
+                        },
+                        {
+                            "name": "alt-svc",
+                            "value": "h3=\":443\"; ma=86400"
+                        }
+                    ],
+                    "content": {
+                        "size": 89,
+                        "compression": -5,
+                        "mimeType": "application/json",
+                        "text": "{\"success\":true,\"exitCode\":\"0\",\"data\":{\"expandedPaths\":{\"$HOME\":\"/home/pbsworks\"}}}\n"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2319,
+                    "bodySize": 89
+                },
+                "cache": {},
+                "timings": {
+                    "connect": 4.180431365966797,
+                    "ssl": 80.83486557006836,
+                    "send": 1.1508464813232422,
+                    "receive": 1.6624927520751953,
+                    "wait": 92.46325492858887
+                },
+                "serverIPAddress": "104.21.52.78"
+            },
+            {
+                "startedDateTime": "2025-12-19T03:13:21.182893+00:00",
+                "time": 127.76446342468262,
+                "request": {
+                    "method": "PUT",
+                    "url": "https://access-web.wjing.xyz/pbsworks/api/storage/service/1",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "content-length",
+                            "value": "239"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "user-agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "origin",
+                            "value": "https://access-web.wjing.xyz"
+                        },
+                        {
+                            "name": "sec-fetch-site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "sec-fetch-mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "sec-fetch-dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "referer",
+                            "value": "https://access-web.wjing.xyz/pbsworks/servermanagement"
+                        },
+                        {
+                            "name": "accept-encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "accept-language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        },
+                        {
+                            "name": "priority",
+                            "value": "u=1, i"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2471,
+                    "bodySize": 239,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{\"name\":\"lenovo-01\",\"url\":\"http://access-pas:5243/pbsworks/pas\",\"username\":\"pbsworks\",\"config\":{},\"rootDirs\":{\"root_dirs\":[{\"path\":\"$HOME\",\"orderId\":1,\"autocreate\":true,\"defaultRoot\":true}]},\"objectId\":\"Service1\",\"createdOn\":1764834741255}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "date",
+                            "value": "Fri, 19 Dec 2025 03:13:21 GMT"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "server",
+                            "value": "cloudflare"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "nel",
+                            "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                        },
+                        {
+                            "name": "cf-cache-status",
+                            "value": "DYNAMIC"
+                        },
+                        {
+                            "name": "report-to",
+                            "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=PMtRAGN5ApuXtw5OfIkOYxZFVfy0GaS1mK8bDYHsJWGjEqLjyZXRLchjqSR%2FxccMCi7cgvvbev67Z1MXr6dJzlj880lDkVcq0D55oWZAaFd4vdxs\"}]}"
+                        },
+                        {
+                            "name": "content-encoding",
+                            "value": "zstd"
+                        },
+                        {
+                            "name": "cf-ray",
+                            "value": "9b03b93b78cb5dd9-HKG"
+                        },
+                        {
+                            "name": "alt-svc",
+                            "value": "h3=\":443\"; ma=86400"
+                        }
+                    ],
+                    "content": {
+                        "size": 262,
+                        "compression": 133,
+                        "mimeType": "application/json",
+                        "text": "[{\"name\":\"lenovo-01\",\"url\":\"http://access-pas:5243/pbsworks/pas\",\"serviceUrl\":\"http://access-pas:5243/pbsworks/pas\",\"username\":\"pbsworks\",\"comment\":\"\",\"createdOn\":1764834741255,\"updatedOn\":1766114001231,\"status\":0,\"accessServer\":\"\",\"rootDirs\":{\"root_dirs\":[{\"autocreate\":true,\"defaultRoot\":true,\"orderId\":1,\"path\":\"$HOME\"}]},\"wlm\":\"\",\"adaptor\":\"\",\"serverProperties\":null,\"objectId\":\"Service1\"}]\n"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2311,
+                    "bodySize": 262
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 3.798246383666992,
+                    "receive": 0.8456707000732422,
+                    "wait": 123.12054634094238
+                },
+                "serverIPAddress": "104.21.52.78"
+            },
+            {
+                "startedDateTime": "2025-12-19T03:13:03.879972+00:00",
+                "time": 120.86892127990723,
+                "request": {
+                    "method": "PUT",
+                    "url": "https://access-web.wjing.xyz/pbsworks/api/Service1/pas/restservice/applications/reload",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "content-length",
+                            "value": "0"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "user-agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "origin",
+                            "value": "https://access-web.wjing.xyz"
+                        },
+                        {
+                            "name": "sec-fetch-site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "sec-fetch-mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "sec-fetch-dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "referer",
+                            "value": "https://access-web.wjing.xyz/pbsworks/servermanagement"
+                        },
+                        {
+                            "name": "accept-encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "accept-language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        },
+                        {
+                            "name": "priority",
+                            "value": "u=1, i"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2429,
+                    "bodySize": 0,
+                    "postData": {
+                        "mimeType": "",
+                        "text": "",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "date",
+                            "value": "Fri, 19 Dec 2025 03:13:03 GMT"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "server",
+                            "value": "cloudflare"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "nel",
+                            "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                        },
+                        {
+                            "name": "cf-cache-status",
+                            "value": "DYNAMIC"
+                        },
+                        {
+                            "name": "report-to",
+                            "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=F7bx78POqwVP3fRmT83%2F15HQor4I9g7GnnY4ZisKljcpnCFPCuTuV3LruP95TvRgfaVczpUi%2BNM5vdFc2zZfgF43Ljfw%2FluHKKxnlPBq4TuCXgnI\"}]}"
+                        },
+                        {
+                            "name": "content-encoding",
+                            "value": "zstd"
+                        },
+                        {
+                            "name": "cf-ray",
+                            "value": "9b03b8cf59625dd9-HKG"
+                        },
+                        {
+                            "name": "alt-svc",
+                            "value": "h3=\":443\"; ma=86400"
+                        }
+                    ],
+                    "content": {
+                        "size": 86,
+                        "compression": 1,
+                        "mimeType": "application/json",
+                        "text": "{\"success\":true,\"exitCode\":\"0\",\"data\":\"Applications repository reloaded successfully\"}\n"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2315,
+                    "bodySize": 86
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 2.630472183227539,
+                    "receive": 0.8823871612548828,
+                    "wait": 117.3560619354248
+                },
+                "serverIPAddress": "104.21.52.78"
+            },
+            {
+                "startedDateTime": "2025-12-19T03:12:50.526337+00:00",
+                "time": 94.81501579284668,
+                "request": {
+                    "method": "GET",
+                    "url": "https://access-web.wjing.xyz/pbsworks/api/storage/service",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "user-agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "sec-fetch-site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "sec-fetch-mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "sec-fetch-dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "referer",
+                            "value": "https://access-web.wjing.xyz/pbsworks/servermanagement"
+                        },
+                        {
+                            "name": "accept-encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "accept-language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8"
+                        },
+                        {
+                            "name": "priority",
+                            "value": "u=1, i"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2356,
+                    "bodySize": 0
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "date",
+                            "value": "Fri, 19 Dec 2025 03:12:50 GMT"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg"
+                        },
+                        {
+                            "name": "server",
+                            "value": "cloudflare"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjAxNmFiMzZlNWU0YjJmNTc2NDU3OTAxNGNmZDNiYmQwNDBhYTI4ZWYifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJwYnN3b3JrcyIsImF1ZCI6ImFjY2Vzcy13ZWIiLCJleHAiOjE3NjYyMTYyNzEsImlhdCI6MTc2NjEwODI3MSwiYXRfaGFzaCI6Im9sMVVMYUZHbG5PVWsyMXRYZ0J3TFEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJwYnN3b3JrcyIsInByZWZlcnJlZF91c2VybmFtZSI6InBic3dvcmtzIn0.EwhFqw7ElZlEw1ausoE5anGPnIt2ZhP4UjwhiFFnYJyRDh-n30YLTiDKSgOdpLJKGNiNncuEGymDjWU2MNsXasggcZwveXf3CjpG_zUTZ7uLkOJDm1Gd2CMahYnM7DxNOtSOiQneOrqgQtdVp5Ug8Jy2bQzZypQGvfgwuU0ixwAX86hFd1ntrT1ndhBRcRcLYxSttfkm_NKAEiDB-CLriedK6yugSlZCgHwOGsJWC4RyYhM05u4Rjua6-zGDNA_89ZrHS2pV3dzJTgY82J7deK91QJ5BEfd6got44JSpy5mTRt-rok2PryGmTojYDO5-08rCsxCrA2D1iQ_qe_Tlmg;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "refresh_token=CiZ3NTd5eTRhbHp2ZWdmemM3a2lzbHkyeWJ2em5nc21laTdyd21nbRImdWd6Y21mazZweWl6ZmdxYjNhc2RsYXRzeW1pczRvajZiZzJ1cW8;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "nel",
+                            "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                        },
+                        {
+                            "name": "cf-cache-status",
+                            "value": "DYNAMIC"
+                        },
+                        {
+                            "name": "report-to",
+                            "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=FXnw6oFjhAt5JUSvkzMT1ZLsqCcehTpJ%2B8vlzdNRZzCcGCmVDNX6rzK0ewudhdpLAaiNjuBFQRcDNafWhBBWmL8XzDsjGW5SgpItRzdwJksU2Vk5\"}]}"
+                        },
+                        {
+                            "name": "content-encoding",
+                            "value": "zstd"
+                        },
+                        {
+                            "name": "cf-ray",
+                            "value": "9b03b87bd8d45dd9-HKG"
+                        },
+                        {
+                            "name": "alt-svc",
+                            "value": "h3=\":443\"; ma=86400"
+                        }
+                    ],
+                    "content": {
+                        "size": 335,
+                        "compression": 160,
+                        "mimeType": "application/json",
+                        "text": "{\"_embedded\":{\"service\":[{\"name\":\"lenovo-01\",\"url\":\"http://access-pas:5243/pbsworks/pas\",\"serviceUrl\":\"http://access-pas:5243/pbsworks/pas\",\"username\":\"pbsworks\",\"comment\":\"\",\"createdOn\":1764834741255,\"updatedOn\":1766113970102,\"status\":0,\"accessServer\":\"192.168.100.194\",\"rootDirs\":{\"root_dirs\":[{\"autocreate\":true,\"defaultRoot\":true,\"orderId\":1,\"path\":\"$HOME\"}]},\"wlm\":\"PBS\",\"adaptor\":\"\",\"serverProperties\":{\"web\":{\"clusterID\":\"0f660785-eff3-4cd5-bc1b-e43c9f53f0e4\"}},\"objectId\":\"Service1\"}]}}\n"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2311,
+                    "bodySize": 335
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 3.313779830932617,
+                    "receive": 0.98419189453125,
+                    "wait": 90.51704406738281
+                },
+                "serverIPAddress": "104.21.52.78"
+            }
+        ]
+    }
+}

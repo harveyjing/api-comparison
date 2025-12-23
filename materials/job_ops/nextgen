@@ -223,6 +223,7 @@
                 "serverIPAddress": "104.21.52.78"
             },
             {
+                "name": "Submit Job",
                 "startedDateTime": "2025-12-19T01:38:49.430366+00:00",
                 "time": 334.2599868774414,
                 "request": {
@@ -436,6 +437,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Get Jobs",
                 "startedDateTime": "2025-12-19T01:39:37.424934+00:00",
                 "time": 186.66791915893555,
                 "request": {
@@ -640,6 +642,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Terminate Job",
                 "startedDateTime": "2025-12-19T01:42:54.777525+00:00",
                 "time": 250.27990341186523,
                 "request": {
@@ -849,6 +852,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Delete Job",
                 "startedDateTime": "2025-12-19T01:43:09.532247+00:00",
                 "time": 128.34715843200684,
                 "request": {
@@ -1062,6 +1066,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Get A Job By ID",
                 "startedDateTime": "2025-12-19T01:43:29.195385+00:00",
                 "time": 97.1827507019043,
                 "request": {
@@ -1258,6 +1263,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Resubmit Job",
                 "startedDateTime": "2025-12-19T01:43:29.302476+00:00",
                 "time": 121.70052528381348,
                 "request": {

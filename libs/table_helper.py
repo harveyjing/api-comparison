@@ -90,6 +90,13 @@ def format_changes(
     if request_diff is None:
         request_diff = compare_request_structures(legacy_entry, nextgen_entry)
     
+    # URL differences
+    url_diff = request_diff.get('url', {})
+    if not url_diff.get('identical', True):
+        legacy_url = url_diff.get('legacy', 'N/A')
+        nextgen_url = url_diff.get('nextgen', 'N/A')
+        changes.append(f"- **Request URL:** Legacy `{legacy_url}` → Nextgen `{nextgen_url}`")
+    
     # Method differences
     if not request_diff.get('method_identical'):
         changes.append("- **Request Method:** Methods differ")

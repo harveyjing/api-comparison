@@ -3,6 +3,8 @@
 
 import os
 import sys
+import html
+import argparse
 from pathlib import Path
 from libs.table_helper import parse_har_file, compare_request_structures, compare_response_structures, format_request_for_table, format_response_for_table, format_cell_content, format_changes
 from libs.har_parser import group_apis_by_name
@@ -126,12 +128,12 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
     lines.append('<table>')
     lines.append('<thead>')
     lines.append('<tr>')
-    lines.append('<th>Changed</th>')
+    lines.append('<th>Name</th>')
     lines.append('<th>Legacy Request</th>')
     lines.append('<th>NextGen Request</th>')
     lines.append('<th>Legacy Response</th>')
     lines.append('<th>NextGen Response</th>')
-    lines.append('<th>Comments</th>')
+    lines.append('<th>Changes</th>')
     lines.append('</tr>')
     lines.append('</thead>')
     lines.append('<tbody>')
@@ -144,15 +146,7 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
         # Compute diffs once for reuse
         request_diff = compare_request_structures(legacy_entry, nextgen_entry)
         response_diff = compare_response_structures(legacy_entry, nextgen_entry)
-        changed = (
-            not request_diff.get('method_identical')
-            or not request_diff['headers'].get('identical')
-            or bool(request_diff.get('body'))
-            or not response_diff['status'].get('identical')
-            or not response_diff['headers'].get('identical')
-            or bool(response_diff.get('body'))
-        )
-        
+        name = legacy_entry['name']
         # Format each column
         legacy_request = format_request_for_table(legacy_entry)
         nextgen_request = format_request_for_table(nextgen_entry)
@@ -174,7 +168,7 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
         
         # Create table row
         lines.append('<tr>')
-        lines.append(f'<td>{str(changed)}</td>')
+        lines.append(f'<td>{name}</td>')
         lines.append(f'<td>{legacy_request_cell}</td>')
         lines.append(f'<td>{nextgen_request_cell}</td>')
         lines.append(f'<td>{legacy_response_cell}</td>')
@@ -190,6 +184,11 @@ def generate_comparison_table(legacy_file: str, nextgen_file: str) -> str:
 
 def main():
     """Main entry point for module processing."""
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Generate comparison tables for API modules')
+    parser.add_argument('--module', '-m', type=str, help='Process only the specified module')
+    args = parser.parse_args()
+    
     # Get project root directory
     project_root = Path(__file__).parent
     
@@ -213,7 +212,16 @@ def main():
         print("No modules found. A module directory must contain both 'legacy' and 'nextgen' files.")
         sys.exit(1)
     
-    print(f"Found {len(modules)} module(s): {', '.join(modules)}")
+    # If module parameter is provided, filter to only that module
+    if args.module:
+        if args.module not in modules:
+            print(f"Error: Module '{args.module}' not found.", file=sys.stderr)
+            print(f"Available modules: {', '.join(modules)}", file=sys.stderr)
+            sys.exit(1)
+        modules = [args.module]
+        print(f"Processing specified module: {args.module}")
+    else:
+        print(f"Found {len(modules)} module(s): {', '.join(modules)}")
     
     # Process each module
     success_count = 0

@@ -2,6 +2,7 @@
 
 from typing import Dict, List, Any, Set, Tuple
 from libs.har_parser import group_apis_by_name, parse_har_file
+from urllib.parse import urlparse, parse_qs
 import json
 
 
@@ -241,6 +242,68 @@ def _strip_multipart_boundary(value: str) -> str:
     return '; '.join(filtered)
 
 
+def extract_url_path(url: str) -> str:
+    """
+    Extract path from URL, ignoring hostname and schema.
+    
+    Args:
+        url: Full URL string
+        
+    Returns:
+        Path with query string if present, otherwise just the path
+    """
+    parsed = urlparse(url)
+    # Return path with query string if present
+    if parsed.query:
+        return f"{parsed.path}?{parsed.query}"
+    return parsed.path
+
+
+def normalize_url_with_param_keys(url: str) -> str:
+    """
+    Extract path from URL with normalized query parameters (only keys, no values).
+    
+    Args:
+        url: Full URL string
+        
+    Returns:
+        Path with normalized query string (only parameter keys) if present, otherwise just the path
+    """
+    parsed = urlparse(url)
+    if parsed.query:
+        # Parse query parameters and extract only keys
+        params = parse_qs(parsed.query, keep_blank_values=True)
+        # Sort keys for consistent comparison
+        param_keys = sorted(params.keys())
+        # Create normalized query string with only keys
+        normalized_query = '&'.join(param_keys)
+        return f"{parsed.path}?{normalized_query}"
+    return parsed.path
+
+
+def compare_urls(legacy_url: str, nextgen_url: str) -> Dict[str, Any]:
+    """
+    Compare two URLs by normalizing them (extracting path and query parameter keys only).
+    Only compares parameter keys, ignoring parameter values.
+    
+    Args:
+        legacy_url: Legacy API URL
+        nextgen_url: NextGen API URL
+        
+    Returns:
+        Dictionary with comparison results including normalized URLs and identical flag
+    """
+    # Normalize URLs to only include parameter keys (not values)
+    legacy_path = normalize_url_with_param_keys(legacy_url)
+    nextgen_path = normalize_url_with_param_keys(nextgen_url)
+    
+    return {
+        'legacy': legacy_path,
+        'nextgen': nextgen_path,
+        'identical': legacy_path == nextgen_path
+    }
+
+
 def compare_headers(
     headers1: Dict[str, str],
     headers2: Dict[str, str],
@@ -289,6 +352,9 @@ def compare_request_structures(legacy_entry: Dict[str, Any], nextgen_entry: Dict
     legacy_req = legacy_entry['request']
     nextgen_req = nextgen_entry['request']
     
+    # Compare URLs
+    url_diff = compare_urls(legacy_entry['original_url'], nextgen_entry['original_url'])
+    
     # Compare headers
     header_diff = compare_headers(legacy_req['headers'], nextgen_req['headers'])
     
@@ -298,6 +364,7 @@ def compare_request_structures(legacy_entry: Dict[str, Any], nextgen_entry: Dict
         body_diff = deep_compare_json(legacy_req['body'], nextgen_req['body'])
     
     return {
+        'url': url_diff,
         'method_identical': legacy_entry['method'] == nextgen_entry['method'],
         'headers': header_diff,
         'body': body_diff

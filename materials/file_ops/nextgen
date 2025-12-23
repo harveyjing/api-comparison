@@ -9,6 +9,7 @@
         "pages": [],
         "entries": [
             {
+                "name": "Submit Job",
                 "startedDateTime": "2025-12-19T02:24:18.652534+00:00",
                 "time": 327.94952392578125,
                 "request": {
@@ -222,6 +223,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Create File",
                 "startedDateTime": "2025-12-19T02:32:54.659337+00:00",
                 "time": 114.76516723632812,
                 "request": {
@@ -426,6 +428,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Create Directory",
                 "startedDateTime": "2025-12-19T02:33:09.911355+00:00",
                 "time": 105.88884353637695,
                 "request": {
@@ -630,6 +633,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Upload File",
                 "startedDateTime": "2025-12-19T02:33:27.305644+00:00",
                 "time": 114.13931846618652,
                 "request": {
@@ -835,6 +839,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Upload Folder",
                 "startedDateTime": "2025-12-19T02:33:39.355551+00:00",
                 "time": 112.71524429321289,
                 "request": {
@@ -1040,6 +1045,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Edit File",
                 "startedDateTime": "2025-12-19T02:34:58.017209+00:00",
                 "time": 132.27295875549316,
                 "request": {
@@ -1244,6 +1250,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Download File",
                 "startedDateTime": "2025-12-19T02:35:28.927874+00:00",
                 "time": 111.01102828979492,
                 "request": {
@@ -1460,6 +1467,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Copy File",
                 "startedDateTime": "2025-12-19T02:36:19.942954+00:00",
                 "time": 105.95822334289551,
                 "request": {
@@ -1664,6 +1672,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Rename File",
                 "startedDateTime": "2025-12-19T02:36:43.775758+00:00",
                 "time": 147.5965976715088,
                 "request": {
@@ -1868,6 +1877,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Cut File",
                 "startedDateTime": "2025-12-19T02:37:16.753633+00:00",
                 "time": 103.66582870483398,
                 "request": {
@@ -2072,6 +2082,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Compress File",
                 "startedDateTime": "2025-12-19T02:37:48.295547+00:00",
                 "time": 112.75005340576172,
                 "request": {
@@ -2276,6 +2287,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Change Permission",
                 "startedDateTime": "2025-12-19T02:38:01.337290+00:00",
                 "time": 105.26347160339355,
                 "request": {
@@ -2480,6 +2492,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Share/Copy File",
                 "startedDateTime": "2025-12-19T02:38:20.511060+00:00",
                 "time": 556.910514831543,
                 "request": {
@@ -2680,6 +2693,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Delete Files",
                 "startedDateTime": "2025-12-19T02:38:29.208585+00:00",
                 "time": 104.10499572753906,
                 "request": {
@@ -2884,6 +2898,7 @@
                 "serverIPAddress": "198.18.93.3"
             },
             {
+                "name": "Uncompress File",
                 "startedDateTime": "2025-12-19T02:38:55.639008+00:00",
                 "time": 106.4906120300293,
                 "request": {

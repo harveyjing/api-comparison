@@ -9,6 +9,7 @@
         "pages": [],
         "entries": [
             {
+                "name": "Get Preferences",
                 "startedDateTime": "2025-12-19T06:01:51.633867+00:00",
                 "time": 296.66757583618164,
                 "request": {
@@ -213,6 +214,7 @@
                 "serverIPAddress": "172.67.196.233"
             },
             {
+                "name": "Update Preferences",
                 "startedDateTime": "2025-12-19T06:04:35.360226+00:00",
                 "time": 95.3683853149414,
                 "request": {
@@ -413,6 +415,7 @@
                 "serverIPAddress": "172.67.196.233"
             },
             {
+                "name": "Reset/Delete Preferences",
                 "startedDateTime": "2025-12-19T06:05:33.235960+00:00",
                 "time": 99.09605979919434,
                 "request": {

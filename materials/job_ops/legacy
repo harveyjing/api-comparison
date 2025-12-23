@@ -9,6 +9,200 @@
         "pages": [],
         "entries": [
             {
+                "name": "Submit Command",
+                "startedDateTime": "2025-12-23T03:04:17.007604+00:00",
+                "time": 163.6371612548828,
+                "request": {
+                    "method": "POST",
+                    "url": "https://access-web-2026-0:4443/pbsworks/api/Service1/pas/restservice/jobs/submitCommand?scope=user&application_id=Untitled156",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZwc3l0czdic2ZzYW5vYW42cGRxa3diYzM3YXlyYXpyd2JiaDV5YRImZ3huZ2F5dWM3dDRkM2p2ZndsN213azduYWk3Z2NxNnJyanN6NG0"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Host",
+                            "value": "access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Content-Length",
+                            "value": "327"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg"
+                        },
+                        {
+                            "name": "User-Agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "Origin",
+                            "value": "https://access-web-2026-0:4443"
+                        },
+                        {
+                            "name": "Sec-Fetch-Site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "Sec-Fetch-Mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "Sec-Fetch-Dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "Referer",
+                            "value": "https://access-web-2026-0:4443/pbsworks/appcomposer"
+                        },
+                        {
+                            "name": "Accept-Encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "Accept-Language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg; refresh_token=CiZwc3l0czdic2ZzYW5vYW42cGRxa3diYzM3YXlyYXpyd2JiaDV5YRImZ3huZ2F5dWM3dDRkM2p2ZndsN213azduYWk3Z2NxNnJyanN6NG0"
+                        }
+                    ],
+                    "queryString": [
+                        {
+                            "name": "scope",
+                            "value": "user"
+                        },
+                        {
+                            "name": "application_id",
+                            "value": "Untitled156"
+                        }
+                    ],
+                    "headersSize": 2479,
+                    "bodySize": 327,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{\"ApplicationId\":\"Untitled156\",\"ApplicationName\":\"Untitled\",\"ApplicationFileExtension\":\"\",\"Tags\":\"\",\"EXECUTABLE_COMMANDS\":\"/bin/sleep 100\",\"QUEUE\":\"workq\",\"WALLTIME\":\"168:00:00\",\"NCPUS\":1,\"MEMORY\":1,\"PRIMARY_FILE\":\"\",\"ADDITIONAL_FILES\":\"\",\"SUBMISSION_DIRECTORY\":\"\",\"DEFAULT_OUTPUT_OPEN_FILE\":\"JOB_OUTPUT_FILE\",\"myapp\":\"MyApps\"}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/1.1",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZwc3l0czdic2ZzYW5vYW42cGRxa3diYzM3YXlyYXpyd2JiaDV5YRImZ3huZ2F5dWM3dDRkM2p2ZndsN213azduYWk3Z2NxNnJyanN6NG0",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "Date",
+                            "value": "Tue, 23 Dec 2025 03:04:17 GMT"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "Content-Length",
+                            "value": "1490"
+                        },
+                        {
+                            "name": "Connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "name": "Server",
+                            "value": "nginx-clojure"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "Set-Cookie",
+                            "value": "refresh_token=CiZwc3l0czdic2ZzYW5vYW42cGRxa3diYzM3YXlyYXpyd2JiaDV5YRImZ3huZ2F5dWM3dDRkM2p2ZndsN213azduYWk3Z2NxNnJyanN6NG0;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMjllNzFkZDk5YzQzODAyZTVhYjMxNzMzYzBmMDY5OTdlZThmOTMifQ.eyJpc3MiOiJodHRwczovL2FjY2Vzcy13ZWItMjAyNi0wOjQ0NDMvcGJzd29ya3Mvb2lkYyIsInN1YiI6InBic3dvcmtzIiwiYXVkIjoiYWNjZXNzLXdlYiIsImV4cCI6MTc2NjQ2OTIyMSwiaWF0IjoxNzY2NDU4NDIxLCJhdF9oYXNoIjoicGJEb1dhLVk2OGt2MXNoQnA5dzF5QSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6InBic3dvcmtzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGJzd29ya3MifQ.rPcGgw-W4bNIcrylzKo9t_vQABx-KrTAdAtB89TCSRuVZgy94GL2rC66AcOkUFJ14wxA9jSpUqkfgt43pA52UGYuueeCorLv-B6qVnvfIxGvp1odwBObTIjvTkHqx_JHU-6RXp5beGBBfjsPy2mZb-1-IeQX0axJ7h6b1xAfMwxRB6lvVlaPfiJUBRESzJkzrVlRhtFx2xV_Bt7cMhBed5Y_9V_zji2OlAA1matS6wx70pWYpk-2IcKt5quvf8w_EZPGIecnBe9Qu8eDGClC-FQ-HFP5ks4DozTl-XxXzRsw8ixl45q9rJpRcQRtJd80DAZRCnLvh_5QdSaZLWiLDg"
+                        }
+                    ],
+                    "content": {
+                        "size": 1490,
+                        "compression": 0,
+                        "mimeType": "application/json",
+                        "text": "{\"success\":true,\"data\":{\"submitCommand\":\"/opt/pbs/bin/qsub -k oe -l walltime=168:00:00 -l Software=Untitled156 -l select=1:arch=linux:ncpus=1:mem=1024mb -N Untitled156 -q workq -v AIF_USER=pbsworks,AIF_MODE=enterprise,PAS_APPLICATION=Untitled156,PAS_PYTHON_PATH=/opt/momclientmodules/python/python,PAS_CLIENT_HOST=null,PAS_SERVER_PORT=17084,PAS_ApplicationName=Untitled,PAS_ADDITIONAL_FILES=,PAS_SUBMISSION_DIRECTORY=,PAS_PRIMARY_FILE=,PAS_QUEUE=workq,PAS_ApplicationFileExtension=,PAS_myapp=MyApps,PAS_JOB_NAME=Untitled156,PAS_NCPUS=1,PAS_MEMORY=1,PAS_DEFAULT_OUTPUT_OPEN_FILE=JOB_OUTPUT_FILE,PAS_EXECUTABLE_COMMANDS=/bin/sleep 100,PAS_WALLTIME=168:00:00,PAS_ApplicationId=Untitled156,PAS_Tags=,PAS_HPCBP_ARGUMENTS=runtime/start.py,PAS_HPCBP_EXECUTABLE=/opt/momclientmodules/python/python,PAS_HPCBP_PRERUN_EXECUTABLE=/opt/momclientmodules/python/python,PAS_HPCBP_PRERUN_SCRIPT=runtime/pre.py,PAS_HPCBP_POSTRUN_EXECUTABLE=/opt/momclientmodules/python/python,PAS_HPCBP_POSTRUN_SCRIPT=runtime/post.py,PYTHONPATH=/opt/momclientmodules/python/python,PAS_SERVER_VERSION=2026.0.0.0,PAS_USERDOMAIN=null,PBS_HOME=/var/spool/pbs,ACCESS_INPUT_FILES='runtime@access-web-2026-0:/home/pbsworks/userapps/private/generated/json-applications/Untitled156/runtime', -W stagein=runtime@access-web-2026-0:/home/pbsworks/userapps/private/generated/json-applications/Untitled156/runtime -W sandbox=private /var/spool/pbsworks/2026.0/access/home/data/pas/system/temp/aifjob2216215394916884619.py\"},\"exitCode\":\"0\"}"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 1927,
+                    "bodySize": 1490
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 1.901865005493164,
+                    "receive": 0.9622573852539062,
+                    "wait": 160.77303886413574
+                },
+                "serverIPAddress": "192.168.111.141"
+            },
+            {
                 "startedDateTime": "2025-12-18T14:17:43.971172+00:00",
                 "time": 501.27387046813965,
                 "request": {

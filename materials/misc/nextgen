@@ -1,0 +1,218 @@
+{
+    "log": {
+        "version": "1.2",
+        "creator": {
+            "name": "mitmproxy",
+            "version": "12.2.1",
+            "comment": ""
+        },
+        "pages": [],
+        "entries": [
+            {
+                "name": "Read File",
+                "startedDateTime": "2025-12-15T02:58:46.860151+00:00",
+                "time": 146.9399929046631,
+                "request": {
+                    "method": "POST",
+                    "url": "https://access-web.wjing.xyz/pbsworks/api/Service1/pas/restservice/files/file/read",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g"
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3M3M2YmtoeWxubWE0dmZ4NmppbGJsNm82NXRrNXEybnY3M2w0cRImdXNsdHVkajJxbmRibHNvdnZjZ2NuZzZqaWR1cnFoN3dmcHQ0Y2c"
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "content-length",
+                            "value": "78"
+                        },
+                        {
+                            "name": "sec-ch-ua-platform",
+                            "value": "\"Windows\""
+                        },
+                        {
+                            "name": "data-type",
+                            "value": "json"
+                        },
+                        {
+                            "name": "cache-control",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "pragma",
+                            "value": "no-cache"
+                        },
+                        {
+                            "name": "sec-ch-ua",
+                            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+                        },
+                        {
+                            "name": "sec-ch-ua-mobile",
+                            "value": "?0"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g"
+                        },
+                        {
+                            "name": "user-agent",
+                            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "accept",
+                            "value": "*/*"
+                        },
+                        {
+                            "name": "origin",
+                            "value": "https://access-web.wjing.xyz"
+                        },
+                        {
+                            "name": "sec-fetch-site",
+                            "value": "same-origin"
+                        },
+                        {
+                            "name": "sec-fetch-mode",
+                            "value": "cors"
+                        },
+                        {
+                            "name": "sec-fetch-dest",
+                            "value": "empty"
+                        },
+                        {
+                            "name": "referer",
+                            "value": "https://access-web.wjing.xyz/pbsworks/fileviewer?filePath=%2Fhome%2Ffnjing%2FNew%20Text%20Document.txt&objectId=Service1&viewerType=textviewer&size=undefined&owner=fnjing&modifiedDate=1765767505098&serverName=lenovo-01&fileType=FILE_REG"
+                        },
+                        {
+                            "name": "accept-encoding",
+                            "value": "gzip, deflate, br, zstd"
+                        },
+                        {
+                            "name": "accept-language",
+                            "value": "en-US,en;q=0.9"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g"
+                        },
+                        {
+                            "name": "cookie",
+                            "value": "refresh_token=CiZ3M3M2YmtoeWxubWE0dmZ4NmppbGJsNm82NXRrNXEybnY3M2w0cRImdXNsdHVkajJxbmRibHNvdnZjZ2NuZzZqaWR1cnFoN3dmcHQ0Y2c"
+                        },
+                        {
+                            "name": "priority",
+                            "value": "u=1, i"
+                        }
+                    ],
+                    "queryString": [],
+                    "headersSize": 2636,
+                    "bodySize": 78,
+                    "postData": {
+                        "mimeType": "application/json",
+                        "text": "{\"path\":\"/home/fnjing/New Text Document.txt\",\"offset\":0,\"size\":0,\"jobid\":null}",
+                        "params": []
+                    }
+                },
+                "response": {
+                    "status": 200,
+                    "statusText": "",
+                    "httpVersion": "HTTP/2.0",
+                    "cookies": [
+                        {
+                            "name": "access_token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        },
+                        {
+                            "name": "refresh_token",
+                            "value": "CiZ3M3M2YmtoeWxubWE0dmZ4NmppbGJsNm82NXRrNXEybnY3M2w0cRImdXNsdHVkajJxbmRibHNvdnZjZ2NuZzZqaWR1cnFoN3dmcHQ0Y2c",
+                            "path": "/",
+                            "domain": "",
+                            "httpOnly": true,
+                            "secure": false
+                        }
+                    ],
+                    "headers": [
+                        {
+                            "name": "date",
+                            "value": "Mon, 15 Dec 2025 02:58:46 GMT"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "name": "access-token",
+                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g"
+                        },
+                        {
+                            "name": "server",
+                            "value": "cloudflare"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzYzY3ZDU4MjI3ZjkxNTgyMTU4Y2JhYTdiMWFhNjk0YmM0MWJiMDMifQ.eyJpc3MiOiJodHRwczovLzE5Mi4xNjguMTAwLjE5NDo0NDQzL3Bic3dvcmtzL29pZGMiLCJzdWIiOiJmbmppbmciLCJhdWQiOiJhY2Nlc3Mtd2ViIiwiZXhwIjoxNzY1ODc1NDg5LCJpYXQiOjE3NjU3Njc0ODksImF0X2hhc2giOiJwQy1xVVhGSTcyREd5ZFlnZm4xdC1nIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZm5qaW5nIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZm5qaW5nIn0.cQ3u8mEmXh8OkpCxiJ5Hfwq_fmxgD5ar336gYiNI7t4lm4JWrS_sHJUVe6qFbVSC4C8Tfdzpd2K6GFoKJolKXec7iJomZ8Q6tHJBBsaAzp-KCXSl-HKIQw9hiClSXa1XacKTMFwoPgiDbLCfSiw6wwKR7dYoX3lG3Z2e82r-wqR88bVwKi6XOhfa5xcX-I2SVGJ8uDTxQgy3c0fwqj04XQEkXn748JSzdNvE5F6iXWwX4pVYLbYdmiM0YaSmuHaKLJe8lLB_fwfuPXQ4jOl7PVk9qIJ4XJj2wrvaHxxDpdRaOYOMaQrwGjXj_UqWVErm2J88NFosQ83pmK5V5PAT_g;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "set-cookie",
+                            "value": "refresh_token=CiZ3M3M2YmtoeWxubWE0dmZ4NmppbGJsNm82NXRrNXEybnY3M2w0cRImdXNsdHVkajJxbmRibHNvdnZjZ2NuZzZqaWR1cnFoN3dmcHQ0Y2c;Path=/;HttpOnly;Max-Age=86400"
+                        },
+                        {
+                            "name": "nel",
+                            "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                        },
+                        {
+                            "name": "cf-cache-status",
+                            "value": "DYNAMIC"
+                        },
+                        {
+                            "name": "report-to",
+                            "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tBaJWRe044idstS6PLsC%2FR9%2BVSoCkrEAXEQWUuJz4spKKkh4TKTKtfLHTpHCfG3EK218nMA75AnRIiBVSvbV5ylRI8OUU7ig%2BqL0%2Fer0NsnaBj48\"}]}"
+                        },
+                        {
+                            "name": "content-encoding",
+                            "value": "zstd"
+                        },
+                        {
+                            "name": "cf-ray",
+                            "value": "9ae2ae62cca6da02-HKG"
+                        },
+                        {
+                            "name": "alt-svc",
+                            "value": "h3=\":443\"; ma=86400"
+                        }
+                    ],
+                    "content": {
+                        "size": 203,
+                        "compression": 93,
+                        "mimeType": "application/json",
+                        "text": "{\"success\":true,\"exitCode\":\"0\",\"data\":{\"file\":{\"filename\":\"New Text Document.txt\",\"fileExt\":\".txt\",\"absPath\":\"/home/fnjing/New Text Document.txt\",\"created\":1765767505098,\"modified\":1765767505098,\"owner\":\"fnjing\",\"type\":\"FILE_REG\",\"isReadable\":true,\"isWritable\":true,\"permissions\":\"-rw-r--r--\"}}}\n"
+                    },
+                    "redirectURL": "",
+                    "headersSize": 2301,
+                    "bodySize": 203
+                },
+                "cache": {},
+                "timings": {
+                    "connect": -1.0,
+                    "ssl": -1.0,
+                    "send": 2.3598670959472656,
+                    "receive": 0.6535053253173828,
+                    "wait": 143.92662048339844
+                },
+                "serverIPAddress": "104.21.52.78"
+            }
+        ]
+    }
+}
